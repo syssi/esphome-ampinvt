@@ -1,0 +1,482 @@
+[23:00:30][D][sensor:098]: 'WiFi Signal Sensor bde-ampinvt-mppt-01': Sending state -32.00000 dBm with 0 decimals of accuracy
+[23:00:30][D][uart_debug:114]: >>> 01:B3:01:00:00:00:00:B5
+[23:00:30][D][sensor:098]: 'Operating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:30][D][text_sensor:069]: 'Ampinvt Operating Status': Sending state 'Normal'
+[23:00:30][D][sensor:098]: 'Battery Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Battery Status': Sending state 'Normal'
+[23:00:31][D][sensor:098]: 'Fan Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Fan Status': Sending state 'Normal'
+[23:00:31][D][sensor:098]: 'Overheat Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Overheat Status': Sending state 'Normal'
+[23:00:31][D][sensor:098]: 'DC Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt DC Output Status': Sending state 'Normal'
+[23:00:31][D][sensor:098]: 'Internal Temperature 1 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Internal Temp #1 Status': Sending state 'Normal'
+[23:00:31][D][sensor:098]: 'Internal Temperature 2 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Internal Temp #2 Status': Sending state 'Normal'
+[23:00:31][D][sensor:098]: 'External Temperature Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt External Temperature Status': Sending state 'Normal'
+[23:00:31][D][sensor:098]: 'Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Charging Status': Sending state 'Not Charging'
+[23:00:31][D][sensor:098]: 'Equal Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Equalising Status': Sending state 'Not Equalising'
+[23:00:31][D][sensor:098]: 'MPPT Tracking Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt MPPT Tracking Status': Sending state 'Not Tracking'
+[23:00:31][D][sensor:098]: 'Float Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Float Charging Status': Sending state 'Not Float Charging'
+[23:00:31][D][sensor:098]: 'Charge Current Limit Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Charge Current Limit Status': Sending state 'Normal'
+[23:00:31][D][sensor:098]: 'Charge Derating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Charge Derating Status': Sending state 'Normal'
+[23:00:31][D][sensor:098]: 'Remote Prohibit Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Remote Prohib Status': Sending state 'Normal'
+[23:00:31][D][sensor:098]: 'Panel Overvoltage Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Panel Overvoltage Status': Sending state 'Normal'
+[23:00:31][D][sensor:098]: 'Charging Output Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Charging Output Relay Status': Sending state 'Closed'
+[23:00:31][D][sensor:098]: 'Load Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Load Output Status': Sending state 'Closed'
+[23:00:31][D][sensor:098]: 'Fan Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Fan Relay Status': Sending state 'Closed'
+[23:00:31][D][sensor:098]: 'Overcharge Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Overcharge Protection Status': Sending state 'Normal'
+[23:00:31][D][sensor:098]: 'Overvoltage Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:00:31][D][text_sensor:069]: 'Ampinvt Overvoltage Protection Status': Sending state 'Normal'
+[23:00:31][D][sensor:098]: 'Solar Panel Voltage': Sending state 0.10000 V with 1 decimals of accuracy
+[23:00:31][D][sensor:098]: 'Solar Battery Voltage': Sending state 13.20000 V with 2 decimals of accuracy
+[23:00:31][D][sensor:098]: 'Solar Charge Current': Sending state 0.00000 A with 2 decimals of accuracy
+[23:00:31][D][sensor:098]: 'Solar Controller Internal Temperature': Sending state 22.40000 °C with 1 decimals of accuracy
+[23:00:31][D][sensor:098]: 'Solar Battery Temperature': Sending state 22.60000 °C with 1 decimals of accuracy
+[23:00:31][D][sensor:098]: 'Solar Daily Yield': Sending state 683.00000 W with 1 decimals of accuracy
+[23:00:31][D][sensor:098]: 'Solar Total Yield': Sending state 290.78403 kW with 1 decimals of accuracy
+[23:00:31][W][component:278]: Component <unknown> took a long time for an operation (430 ms).
+[23:00:31][W][component:279]: Components should block for at most 30 ms.
+[23:00:31][D][uart_debug:114]: <<< 01:B3:01:00:00:00:00:01:05:28:00:00:00:E0:00:00:00:E2:00:00:00:00:02:AB:00:04:6F:E0:00:00:00:00:00:00:00:00:A5
+[23:00:37][D][sensor:098]: 'WiFi Signal dB bde-ampinvt-mppt-01': Sending state -32.00000 dBm with 0 decimals of accuracy
+[23:00:37][D][sensor:098]: 'WiFi Signal Percent bde-ampinvt-mppt-01': Sending state 100.00000 % with 0 decimals of accuracy
+[23:00:47][D][sensor:098]: 'Uptime Sensor': Sending state 94.89900 s with 0 decimals of accuracy
+[23:01:00][D][uart_debug:114]: >>> 01:B3:01:00:00:00:00:B5
+[23:01:01][D][sensor:098]: 'Operating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Operating Status': Sending state 'Normal'
+[23:01:01][D][sensor:098]: 'Battery Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Battery Status': Sending state 'Normal'
+[23:01:01][D][sensor:098]: 'Fan Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Fan Status': Sending state 'Normal'
+[23:01:01][D][sensor:098]: 'Overheat Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Overheat Status': Sending state 'Normal'
+[23:01:01][D][sensor:098]: 'DC Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt DC Output Status': Sending state 'Normal'
+[23:01:01][D][sensor:098]: 'Internal Temperature 1 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Internal Temp #1 Status': Sending state 'Normal'
+[23:01:01][D][sensor:098]: 'Internal Temperature 2 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Internal Temp #2 Status': Sending state 'Normal'
+[23:01:01][D][sensor:098]: 'External Temperature Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt External Temperature Status': Sending state 'Normal'
+[23:01:01][D][sensor:098]: 'Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Charging Status': Sending state 'Not Charging'
+[23:01:01][D][sensor:098]: 'Equal Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Equalising Status': Sending state 'Not Equalising'
+[23:01:01][D][sensor:098]: 'MPPT Tracking Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt MPPT Tracking Status': Sending state 'Not Tracking'
+[23:01:01][D][sensor:098]: 'Float Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Float Charging Status': Sending state 'Not Float Charging'
+[23:01:01][D][sensor:098]: 'Charge Current Limit Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Charge Current Limit Status': Sending state 'Normal'
+[23:01:01][D][sensor:098]: 'Charge Derating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Charge Derating Status': Sending state 'Normal'
+[23:01:01][D][sensor:098]: 'Remote Prohibit Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Remote Prohib Status': Sending state 'Normal'
+[23:01:01][D][sensor:098]: 'Panel Overvoltage Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Panel Overvoltage Status': Sending state 'Normal'
+[23:01:01][D][sensor:098]: 'Charging Output Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Charging Output Relay Status': Sending state 'Closed'
+[23:01:01][D][sensor:098]: 'Load Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Load Output Status': Sending state 'Closed'
+[23:01:01][D][sensor:098]: 'Fan Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Fan Relay Status': Sending state 'Closed'
+[23:01:01][D][sensor:098]: 'Overcharge Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Overcharge Protection Status': Sending state 'Normal'
+[23:01:01][D][sensor:098]: 'Overvoltage Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:01][D][text_sensor:069]: 'Ampinvt Overvoltage Protection Status': Sending state 'Normal'
+[23:01:01][D][sensor:098]: 'Solar Panel Voltage': Sending state 0.10000 V with 1 decimals of accuracy
+[23:01:01][D][sensor:098]: 'Solar Battery Voltage': Sending state 13.20000 V with 2 decimals of accuracy
+[23:01:01][D][sensor:098]: 'Solar Charge Current': Sending state 0.00000 A with 2 decimals of accuracy
+[23:01:01][D][sensor:098]: 'Solar Controller Internal Temperature': Sending state 22.40000 °C with 1 decimals of accuracy
+[23:01:01][D][sensor:098]: 'Solar Battery Temperature': Sending state 22.60000 °C with 1 decimals of accuracy
+[23:01:01][D][sensor:098]: 'Solar Daily Yield': Sending state 683.00000 W with 1 decimals of accuracy
+[23:01:01][D][sensor:098]: 'Solar Total Yield': Sending state 290.78403 kW with 1 decimals of accuracy
+[23:01:01][D][uart_debug:114]: <<< 01:B3:01:00:00:00:00:01:05:28:00:00:00:E0:00:00:00:E2:00:00:00:00:02:AB:00:04:6F:E0:00:00:00:00:00:00:00:00:A5
+[23:01:30][D][sensor:098]: 'WiFi Signal Sensor bde-ampinvt-mppt-01': Sending state -32.00000 dBm with 0 decimals of accuracy
+[23:01:30][D][uart_debug:114]: >>> 01:B3:01:00:00:00:00:B5
+[23:01:31][D][sensor:098]: 'Operating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Operating Status': Sending state 'Normal'
+[23:01:31][D][sensor:098]: 'Battery Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Battery Status': Sending state 'Normal'
+[23:01:31][D][sensor:098]: 'Fan Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Fan Status': Sending state 'Normal'
+[23:01:31][D][sensor:098]: 'Overheat Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Overheat Status': Sending state 'Normal'
+[23:01:31][D][sensor:098]: 'DC Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt DC Output Status': Sending state 'Normal'
+[23:01:31][D][sensor:098]: 'Internal Temperature 1 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Internal Temp #1 Status': Sending state 'Normal'
+[23:01:31][D][sensor:098]: 'Internal Temperature 2 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Internal Temp #2 Status': Sending state 'Normal'
+[23:01:31][D][sensor:098]: 'External Temperature Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt External Temperature Status': Sending state 'Normal'
+[23:01:31][D][sensor:098]: 'Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Charging Status': Sending state 'Not Charging'
+[23:01:31][D][sensor:098]: 'Equal Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Equalising Status': Sending state 'Not Equalising'
+[23:01:31][D][sensor:098]: 'MPPT Tracking Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt MPPT Tracking Status': Sending state 'Not Tracking'
+[23:01:31][D][sensor:098]: 'Float Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Float Charging Status': Sending state 'Not Float Charging'
+[23:01:31][D][sensor:098]: 'Charge Current Limit Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Charge Current Limit Status': Sending state 'Normal'
+[23:01:31][D][sensor:098]: 'Charge Derating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Charge Derating Status': Sending state 'Normal'
+[23:01:31][D][sensor:098]: 'Remote Prohibit Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Remote Prohib Status': Sending state 'Normal'
+[23:01:31][D][sensor:098]: 'Panel Overvoltage Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Panel Overvoltage Status': Sending state 'Normal'
+[23:01:31][D][sensor:098]: 'Charging Output Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Charging Output Relay Status': Sending state 'Closed'
+[23:01:31][D][sensor:098]: 'Load Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Load Output Status': Sending state 'Closed'
+[23:01:31][D][sensor:098]: 'Fan Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Fan Relay Status': Sending state 'Closed'
+[23:01:31][D][sensor:098]: 'Overcharge Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Overcharge Protection Status': Sending state 'Normal'
+[23:01:31][D][sensor:098]: 'Overvoltage Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:01:31][D][text_sensor:069]: 'Ampinvt Overvoltage Protection Status': Sending state 'Normal'
+[23:01:31][D][sensor:098]: 'Solar Panel Voltage': Sending state 0.10000 V with 1 decimals of accuracy
+[23:01:31][D][sensor:098]: 'Solar Battery Voltage': Sending state 13.20000 V with 2 decimals of accuracy
+[23:01:31][D][sensor:098]: 'Solar Charge Current': Sending state 0.00000 A with 2 decimals of accuracy
+[23:01:31][D][sensor:098]: 'Solar Controller Internal Temperature': Sending state 22.40000 °C with 1 decimals of accuracy
+[23:01:31][D][sensor:098]: 'Solar Battery Temperature': Sending state 22.60000 °C with 1 decimals of accuracy
+[23:01:31][D][sensor:098]: 'Solar Daily Yield': Sending state 683.00000 W with 1 decimals of accuracy
+[23:01:31][D][sensor:098]: 'Solar Total Yield': Sending state 290.78403 kW with 1 decimals of accuracy
+[23:01:31][D][uart_debug:114]: <<< 01:B3:01:00:00:00:00:01:05:28:00:00:00:E0:00:00:00:E2:00:00:00:00:02:AB:00:04:6F:E0:00:00:00:00:00:00:00:00:A5
+[23:01:37][D][sensor:098]: 'WiFi Signal dB bde-ampinvt-mppt-01': Sending state -34.00000 dBm with 0 decimals of accuracy
+[23:01:37][D][sensor:098]: 'WiFi Signal Percent bde-ampinvt-mppt-01': Sending state 100.00000 % with 0 decimals of accuracy
+[23:01:41][D][time:046]: Synchronized time: 2025-07-11 23:01:41
+[23:01:41][D][time:046]: Synchronized time: 2025-07-11 23:01:41
+[23:01:47][D][sensor:098]: 'Uptime Sensor': Sending state 154.89900 s with 0 decimals of accuracy
+[23:02:00][D][uart_debug:114]: >>> 01:B3:01:00:00:00:00:B5
+[23:02:00][D][sensor:098]: 'Operating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Operating Status': Sending state 'Normal'
+[23:02:00][D][sensor:098]: 'Battery Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Battery Status': Sending state 'Normal'
+[23:02:00][D][sensor:098]: 'Fan Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Fan Status': Sending state 'Normal'
+[23:02:00][D][sensor:098]: 'Overheat Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Overheat Status': Sending state 'Normal'
+[23:02:00][D][sensor:098]: 'DC Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt DC Output Status': Sending state 'Normal'
+[23:02:00][D][sensor:098]: 'Internal Temperature 1 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Internal Temp #1 Status': Sending state 'Normal'
+[23:02:00][D][sensor:098]: 'Internal Temperature 2 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Internal Temp #2 Status': Sending state 'Normal'
+[23:02:00][D][sensor:098]: 'External Temperature Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt External Temperature Status': Sending state 'Normal'
+[23:02:00][D][sensor:098]: 'Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Charging Status': Sending state 'Not Charging'
+[23:02:00][D][sensor:098]: 'Equal Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Equalising Status': Sending state 'Not Equalising'
+[23:02:00][D][sensor:098]: 'MPPT Tracking Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt MPPT Tracking Status': Sending state 'Not Tracking'
+[23:02:00][D][sensor:098]: 'Float Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Float Charging Status': Sending state 'Not Float Charging'
+[23:02:00][D][sensor:098]: 'Charge Current Limit Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Charge Current Limit Status': Sending state 'Normal'
+[23:02:00][D][sensor:098]: 'Charge Derating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Charge Derating Status': Sending state 'Normal'
+[23:02:00][D][sensor:098]: 'Remote Prohibit Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Remote Prohib Status': Sending state 'Normal'
+[23:02:00][D][sensor:098]: 'Panel Overvoltage Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Panel Overvoltage Status': Sending state 'Normal'
+[23:02:00][D][sensor:098]: 'Charging Output Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Charging Output Relay Status': Sending state 'Closed'
+[23:02:00][D][sensor:098]: 'Load Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Load Output Status': Sending state 'Closed'
+[23:02:00][D][sensor:098]: 'Fan Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Fan Relay Status': Sending state 'Closed'
+[23:02:00][D][sensor:098]: 'Overcharge Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Overcharge Protection Status': Sending state 'Normal'
+[23:02:00][D][sensor:098]: 'Overvoltage Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:00][D][text_sensor:069]: 'Ampinvt Overvoltage Protection Status': Sending state 'Normal'
+[23:02:00][D][sensor:098]: 'Solar Panel Voltage': Sending state 0.10000 V with 1 decimals of accuracy
+[23:02:00][D][sensor:098]: 'Solar Battery Voltage': Sending state 13.20000 V with 2 decimals of accuracy
+[23:02:00][D][sensor:098]: 'Solar Charge Current': Sending state 0.00000 A with 2 decimals of accuracy
+[23:02:00][D][sensor:098]: 'Solar Controller Internal Temperature': Sending state 22.40000 °C with 1 decimals of accuracy
+[23:02:00][D][sensor:098]: 'Solar Battery Temperature': Sending state 22.60000 °C with 1 decimals of accuracy
+[23:02:00][D][sensor:098]: 'Solar Daily Yield': Sending state 683.00000 W with 1 decimals of accuracy
+[23:02:00][D][sensor:098]: 'Solar Total Yield': Sending state 290.78403 kW with 1 decimals of accuracy
+[23:02:01][W][component:278]: Component <unknown> took a long time for an operation (441 ms).
+[23:02:01][W][component:279]: Components should block for at most 30 ms.
+[23:02:01][D][uart_debug:114]: <<< 01:B3:01:00:00:00:00:01:05:28:00:00:00:E0:00:00:00:E2:00:00:00:00:02:AB:00:04:6F:E0:00:00:00:00:00:00:00:00:A5
+[23:02:30][D][sensor:098]: 'WiFi Signal Sensor bde-ampinvt-mppt-01': Sending state -33.00000 dBm with 0 decimals of accuracy
+[23:02:30][D][uart_debug:114]: >>> 01:B3:01:00:00:00:00:B5
+[23:02:30][D][sensor:098]: 'Operating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Operating Status': Sending state 'Normal'
+[23:02:30][D][sensor:098]: 'Battery Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Battery Status': Sending state 'Normal'
+[23:02:30][D][sensor:098]: 'Fan Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Fan Status': Sending state 'Normal'
+[23:02:30][D][sensor:098]: 'Overheat Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Overheat Status': Sending state 'Normal'
+[23:02:30][D][sensor:098]: 'DC Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt DC Output Status': Sending state 'Normal'
+[23:02:30][D][sensor:098]: 'Internal Temperature 1 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Internal Temp #1 Status': Sending state 'Normal'
+[23:02:30][D][sensor:098]: 'Internal Temperature 2 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Internal Temp #2 Status': Sending state 'Normal'
+[23:02:30][D][sensor:098]: 'External Temperature Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt External Temperature Status': Sending state 'Normal'
+[23:02:30][D][sensor:098]: 'Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Charging Status': Sending state 'Not Charging'
+[23:02:30][D][sensor:098]: 'Equal Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Equalising Status': Sending state 'Not Equalising'
+[23:02:30][D][sensor:098]: 'MPPT Tracking Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt MPPT Tracking Status': Sending state 'Not Tracking'
+[23:02:30][D][sensor:098]: 'Float Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Float Charging Status': Sending state 'Not Float Charging'
+[23:02:30][D][sensor:098]: 'Charge Current Limit Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Charge Current Limit Status': Sending state 'Normal'
+[23:02:30][D][sensor:098]: 'Charge Derating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Charge Derating Status': Sending state 'Normal'
+[23:02:30][D][sensor:098]: 'Remote Prohibit Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Remote Prohib Status': Sending state 'Normal'
+[23:02:30][D][sensor:098]: 'Panel Overvoltage Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Panel Overvoltage Status': Sending state 'Normal'
+[23:02:30][D][sensor:098]: 'Charging Output Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Charging Output Relay Status': Sending state 'Closed'
+[23:02:30][D][sensor:098]: 'Load Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Load Output Status': Sending state 'Closed'
+[23:02:30][D][sensor:098]: 'Fan Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Fan Relay Status': Sending state 'Closed'
+[23:02:30][D][sensor:098]: 'Overcharge Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Overcharge Protection Status': Sending state 'Normal'
+[23:02:30][D][sensor:098]: 'Overvoltage Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:02:30][D][text_sensor:069]: 'Ampinvt Overvoltage Protection Status': Sending state 'Normal'
+[23:02:30][D][sensor:098]: 'Solar Panel Voltage': Sending state 0.10000 V with 1 decimals of accuracy
+[23:02:31][D][sensor:098]: 'Solar Battery Voltage': Sending state 13.20000 V with 2 decimals of accuracy
+[23:02:31][D][sensor:098]: 'Solar Charge Current': Sending state 0.00000 A with 2 decimals of accuracy
+[23:02:31][D][sensor:098]: 'Solar Controller Internal Temperature': Sending state 22.30000 °C with 1 decimals of accuracy
+[23:02:31][D][sensor:098]: 'Solar Battery Temperature': Sending state 22.60000 °C with 1 decimals of accuracy
+[23:02:31][D][sensor:098]: 'Solar Daily Yield': Sending state 683.00000 W with 1 decimals of accuracy
+[23:02:31][D][sensor:098]: 'Solar Total Yield': Sending state 290.78403 kW with 1 decimals of accuracy
+[23:02:31][D][uart_debug:114]: <<< 01:B3:01:00:00:00:00:01:05:28:00:00:00:DF:00:00:00:E2:00:00:00:00:02:AB:00:04:6F:E0:00:00:00:00:00:00:00:00:A4
+[23:02:37][D][sensor:098]: 'WiFi Signal dB bde-ampinvt-mppt-01': Sending state -32.00000 dBm with 0 decimals of accuracy
+[23:02:37][D][sensor:098]: 'WiFi Signal Percent bde-ampinvt-mppt-01': Sending state 100.00000 % with 0 decimals of accuracy
+[23:02:47][D][sensor:098]: 'Uptime Sensor': Sending state 214.89900 s with 0 decimals of accuracy
+[23:03:00][D][uart_debug:114]: >>> 01:B3:01:00:00:00:00:B5
+[23:03:00][D][sensor:098]: 'Operating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt Operating Status': Sending state 'Normal'
+[23:03:00][D][sensor:098]: 'Battery Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt Battery Status': Sending state 'Normal'
+[23:03:00][D][sensor:098]: 'Fan Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt Fan Status': Sending state 'Normal'
+[23:03:00][D][sensor:098]: 'Overheat Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt Overheat Status': Sending state 'Normal'
+[23:03:00][D][sensor:098]: 'DC Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt DC Output Status': Sending state 'Normal'
+[23:03:00][D][sensor:098]: 'Internal Temperature 1 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt Internal Temp #1 Status': Sending state 'Normal'
+[23:03:00][D][sensor:098]: 'Internal Temperature 2 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt Internal Temp #2 Status': Sending state 'Normal'
+[23:03:00][D][sensor:098]: 'External Temperature Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt External Temperature Status': Sending state 'Normal'
+[23:03:00][D][sensor:098]: 'Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt Charging Status': Sending state 'Not Charging'
+[23:03:00][D][sensor:098]: 'Equal Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt Equalising Status': Sending state 'Not Equalising'
+[23:03:00][D][sensor:098]: 'MPPT Tracking Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt MPPT Tracking Status': Sending state 'Not Tracking'
+[23:03:00][D][sensor:098]: 'Float Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt Float Charging Status': Sending state 'Not Float Charging'
+[23:03:00][D][sensor:098]: 'Charge Current Limit Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt Charge Current Limit Status': Sending state 'Normal'
+[23:03:00][D][sensor:098]: 'Charge Derating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt Charge Derating Status': Sending state 'Normal'
+[23:03:00][D][sensor:098]: 'Remote Prohibit Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt Remote Prohib Status': Sending state 'Normal'
+[23:03:00][D][sensor:098]: 'Panel Overvoltage Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt Panel Overvoltage Status': Sending state 'Normal'
+[23:03:00][D][sensor:098]: 'Charging Output Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:00][D][text_sensor:069]: 'Ampinvt Charging Output Relay Status': Sending state 'Closed'
+[23:03:01][D][sensor:098]: 'Load Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:01][D][text_sensor:069]: 'Ampinvt Load Output Status': Sending state 'Closed'
+[23:03:01][D][sensor:098]: 'Fan Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:01][D][text_sensor:069]: 'Ampinvt Fan Relay Status': Sending state 'Closed'
+[23:03:01][D][sensor:098]: 'Overcharge Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:01][D][text_sensor:069]: 'Ampinvt Overcharge Protection Status': Sending state 'Normal'
+[23:03:01][D][sensor:098]: 'Overvoltage Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:01][D][text_sensor:069]: 'Ampinvt Overvoltage Protection Status': Sending state 'Normal'
+[23:03:01][D][sensor:098]: 'Solar Panel Voltage': Sending state 0.10000 V with 1 decimals of accuracy
+[23:03:01][D][sensor:098]: 'Solar Battery Voltage': Sending state 13.20000 V with 2 decimals of accuracy
+[23:03:01][D][sensor:098]: 'Solar Charge Current': Sending state 0.00000 A with 2 decimals of accuracy
+[23:03:01][D][sensor:098]: 'Solar Controller Internal Temperature': Sending state 22.30000 °C with 1 decimals of accuracy
+[23:03:01][D][sensor:098]: 'Solar Battery Temperature': Sending state 22.60000 °C with 1 decimals of accuracy
+[23:03:01][D][sensor:098]: 'Solar Daily Yield': Sending state 683.00000 W with 1 decimals of accuracy
+[23:03:01][D][sensor:098]: 'Solar Total Yield': Sending state 290.78403 kW with 1 decimals of accuracy
+[23:03:01][D][uart_debug:114]: <<< 01:B3:01:00:00:00:00:01:05:28:00:00:00:DF:00:00:00:E2:00:00:00:00:02:AB:00:04:6F:E0:00:00:00:00:00:00:00:00:A4
+[23:03:30][D][sensor:098]: 'WiFi Signal Sensor bde-ampinvt-mppt-01': Sending state -32.00000 dBm with 0 decimals of accuracy
+[23:03:30][D][uart_debug:114]: >>> 01:B3:01:00:00:00:00:B5
+[23:03:30][D][sensor:098]: 'Operating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:30][D][text_sensor:069]: 'Ampinvt Operating Status': Sending state 'Normal'
+[23:03:30][D][sensor:098]: 'Battery Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:30][D][text_sensor:069]: 'Ampinvt Battery Status': Sending state 'Normal'
+[23:03:30][D][sensor:098]: 'Fan Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:30][D][text_sensor:069]: 'Ampinvt Fan Status': Sending state 'Normal'
+[23:03:30][D][sensor:098]: 'Overheat Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:30][D][text_sensor:069]: 'Ampinvt Overheat Status': Sending state 'Normal'
+[23:03:30][D][sensor:098]: 'DC Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:30][D][text_sensor:069]: 'Ampinvt DC Output Status': Sending state 'Normal'
+[23:03:30][D][sensor:098]: 'Internal Temperature 1 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:30][D][text_sensor:069]: 'Ampinvt Internal Temp #1 Status': Sending state 'Normal'
+[23:03:30][D][sensor:098]: 'Internal Temperature 2 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:30][D][text_sensor:069]: 'Ampinvt Internal Temp #2 Status': Sending state 'Normal'
+[23:03:30][D][sensor:098]: 'External Temperature Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:30][D][text_sensor:069]: 'Ampinvt External Temperature Status': Sending state 'Normal'
+[23:03:30][D][sensor:098]: 'Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:30][D][text_sensor:069]: 'Ampinvt Charging Status': Sending state 'Not Charging'
+[23:03:30][D][sensor:098]: 'Equal Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:30][D][text_sensor:069]: 'Ampinvt Equalising Status': Sending state 'Not Equalising'
+[23:03:30][D][sensor:098]: 'MPPT Tracking Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:30][D][text_sensor:069]: 'Ampinvt MPPT Tracking Status': Sending state 'Not Tracking'
+[23:03:30][D][sensor:098]: 'Float Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:30][D][text_sensor:069]: 'Ampinvt Float Charging Status': Sending state 'Not Float Charging'
+[23:03:30][D][sensor:098]: 'Charge Current Limit Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:30][D][text_sensor:069]: 'Ampinvt Charge Current Limit Status': Sending state 'Normal'
+[23:03:31][D][sensor:098]: 'Charge Derating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:31][D][text_sensor:069]: 'Ampinvt Charge Derating Status': Sending state 'Normal'
+[23:03:31][D][sensor:098]: 'Remote Prohibit Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:31][D][text_sensor:069]: 'Ampinvt Remote Prohib Status': Sending state 'Normal'
+[23:03:31][D][sensor:098]: 'Panel Overvoltage Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:31][D][text_sensor:069]: 'Ampinvt Panel Overvoltage Status': Sending state 'Normal'
+[23:03:31][D][sensor:098]: 'Charging Output Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:31][D][text_sensor:069]: 'Ampinvt Charging Output Relay Status': Sending state 'Closed'
+[23:03:31][D][sensor:098]: 'Load Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:31][D][text_sensor:069]: 'Ampinvt Load Output Status': Sending state 'Closed'
+[23:03:31][D][sensor:098]: 'Fan Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:31][D][text_sensor:069]: 'Ampinvt Fan Relay Status': Sending state 'Closed'
+[23:03:31][D][sensor:098]: 'Overcharge Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:31][D][text_sensor:069]: 'Ampinvt Overcharge Protection Status': Sending state 'Normal'
+[23:03:31][D][sensor:098]: 'Overvoltage Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:03:31][D][text_sensor:069]: 'Ampinvt Overvoltage Protection Status': Sending state 'Normal'
+[23:03:31][D][sensor:098]: 'Solar Panel Voltage': Sending state 0.10000 V with 1 decimals of accuracy
+[23:03:31][D][sensor:098]: 'Solar Battery Voltage': Sending state 13.20000 V with 2 decimals of accuracy
+[23:03:31][D][sensor:098]: 'Solar Charge Current': Sending state 0.00000 A with 2 decimals of accuracy
+[23:03:31][D][sensor:098]: 'Solar Controller Internal Temperature': Sending state 22.40000 °C with 1 decimals of accuracy
+[23:03:31][D][sensor:098]: 'Solar Battery Temperature': Sending state 22.60000 °C with 1 decimals of accuracy
+[23:03:31][D][sensor:098]: 'Solar Daily Yield': Sending state 683.00000 W with 1 decimals of accuracy
+[23:03:31][D][sensor:098]: 'Solar Total Yield': Sending state 290.78403 kW with 1 decimals of accuracy
+[23:03:31][D][uart_debug:114]: <<< 01:B3:01:00:00:00:00:01:05:28:00:00:00:E0:00:00:00:E2:00:00:00:00:02:AB:00:04:6F:E0:00:00:00:00:00:00:00:00:A5
+[23:03:37][D][sensor:098]: 'WiFi Signal dB bde-ampinvt-mppt-01': Sending state -33.00000 dBm with 0 decimals of accuracy
+[23:03:37][D][sensor:098]: 'WiFi Signal Percent bde-ampinvt-mppt-01': Sending state 100.00000 % with 0 decimals of accuracy
+[23:03:47][D][sensor:098]: 'Uptime Sensor': Sending state 274.89899 s with 0 decimals of accuracy
+[23:04:00][D][uart_debug:114]: >>> 01:B3:01:00:00:00:00:B5
+[23:04:00][D][sensor:098]: 'Operating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:00][D][text_sensor:069]: 'Ampinvt Operating Status': Sending state 'Normal'
+[23:04:00][D][sensor:098]: 'Battery Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:00][D][text_sensor:069]: 'Ampinvt Battery Status': Sending state 'Normal'
+[23:04:00][D][sensor:098]: 'Fan Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:00][D][text_sensor:069]: 'Ampinvt Fan Status': Sending state 'Normal'
+[23:04:00][D][sensor:098]: 'Overheat Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:00][D][text_sensor:069]: 'Ampinvt Overheat Status': Sending state 'Normal'
+[23:04:00][D][sensor:098]: 'DC Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:00][D][text_sensor:069]: 'Ampinvt DC Output Status': Sending state 'Normal'
+[23:04:00][D][sensor:098]: 'Internal Temperature 1 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:00][D][text_sensor:069]: 'Ampinvt Internal Temp #1 Status': Sending state 'Normal'
+[23:04:00][D][sensor:098]: 'Internal Temperature 2 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:00][D][text_sensor:069]: 'Ampinvt Internal Temp #2 Status': Sending state 'Normal'
+[23:04:00][D][sensor:098]: 'External Temperature Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:00][D][text_sensor:069]: 'Ampinvt External Temperature Status': Sending state 'Normal'
+[23:04:00][D][sensor:098]: 'Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:00][D][text_sensor:069]: 'Ampinvt Charging Status': Sending state 'Not Charging'
+[23:04:00][D][sensor:098]: 'Equal Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:00][D][text_sensor:069]: 'Ampinvt Equalising Status': Sending state 'Not Equalising'
+[23:04:01][D][sensor:098]: 'MPPT Tracking Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:01][D][text_sensor:069]: 'Ampinvt MPPT Tracking Status': Sending state 'Not Tracking'
+[23:04:01][D][sensor:098]: 'Float Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:01][D][text_sensor:069]: 'Ampinvt Float Charging Status': Sending state 'Not Float Charging'
+[23:04:01][D][sensor:098]: 'Charge Current Limit Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:01][D][text_sensor:069]: 'Ampinvt Charge Current Limit Status': Sending state 'Normal'
+[23:04:01][D][sensor:098]: 'Charge Derating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:01][D][text_sensor:069]: 'Ampinvt Charge Derating Status': Sending state 'Normal'
+[23:04:01][D][sensor:098]: 'Remote Prohibit Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:01][D][text_sensor:069]: 'Ampinvt Remote Prohib Status': Sending state 'Normal'
+[23:04:01][D][sensor:098]: 'Panel Overvoltage Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:01][D][text_sensor:069]: 'Ampinvt Panel Overvoltage Status': Sending state 'Normal'
+[23:04:01][D][sensor:098]: 'Charging Output Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:01][D][text_sensor:069]: 'Ampinvt Charging Output Relay Status': Sending state 'Closed'
+[23:04:01][D][sensor:098]: 'Load Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:01][D][text_sensor:069]: 'Ampinvt Load Output Status': Sending state 'Closed'
+[23:04:01][D][sensor:098]: 'Fan Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:01][D][text_sensor:069]: 'Ampinvt Fan Relay Status': Sending state 'Closed'
+[23:04:01][D][sensor:098]: 'Overcharge Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:01][D][text_sensor:069]: 'Ampinvt Overcharge Protection Status': Sending state 'Normal'
+[23:04:01][D][sensor:098]: 'Overvoltage Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:01][D][text_sensor:069]: 'Ampinvt Overvoltage Protection Status': Sending state 'Normal'
+[23:04:01][D][sensor:098]: 'Solar Panel Voltage': Sending state 0.10000 V with 1 decimals of accuracy
+[23:04:01][D][sensor:098]: 'Solar Battery Voltage': Sending state 13.19000 V with 2 decimals of accuracy
+[23:04:01][D][sensor:098]: 'Solar Charge Current': Sending state 0.00000 A with 2 decimals of accuracy
+[23:04:01][D][sensor:098]: 'Solar Controller Internal Temperature': Sending state 22.40000 °C with 1 decimals of accuracy
+[23:04:01][D][sensor:098]: 'Solar Battery Temperature': Sending state 22.60000 °C with 1 decimals of accuracy
+[23:04:01][D][sensor:098]: 'Solar Daily Yield': Sending state 683.00000 W with 1 decimals of accuracy
+[23:04:01][D][sensor:098]: 'Solar Total Yield': Sending state 290.78403 kW with 1 decimals of accuracy
+[23:04:01][D][uart_debug:114]: <<< 01:B3:01:00:00:00:00:01:05:27:00:00:00:E0:00:00:00:E2:00:00:00:00:02:AB:00:04:6F:E0:00:00:00:00:00:00:00:00:A4
+[23:04:30][D][sensor:098]: 'WiFi Signal Sensor bde-ampinvt-mppt-01': Sending state -34.00000 dBm with 0 decimals of accuracy
+[23:04:30][D][uart_debug:114]: >>> 01:B3:01:00:00:00:00:B5
+[23:04:30][D][sensor:098]: 'Operating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:30][D][text_sensor:069]: 'Ampinvt Operating Status': Sending state 'Normal'
+[23:04:30][D][sensor:098]: 'Battery Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:30][D][text_sensor:069]: 'Ampinvt Battery Status': Sending state 'Normal'
+[23:04:30][D][sensor:098]: 'Fan Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:30][D][text_sensor:069]: 'Ampinvt Fan Status': Sending state 'Normal'
+[23:04:30][D][sensor:098]: 'Overheat Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:30][D][text_sensor:069]: 'Ampinvt Overheat Status': Sending state 'Normal'
+[23:04:30][D][sensor:098]: 'DC Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:30][D][text_sensor:069]: 'Ampinvt DC Output Status': Sending state 'Normal'
+[23:04:30][D][sensor:098]: 'Internal Temperature 1 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:30][D][text_sensor:069]: 'Ampinvt Internal Temp #1 Status': Sending state 'Normal'
+[23:04:30][D][sensor:098]: 'Internal Temperature 2 Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:31][D][text_sensor:069]: 'Ampinvt Internal Temp #2 Status': Sending state 'Normal'
+[23:04:31][D][sensor:098]: 'External Temperature Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:31][D][text_sensor:069]: 'Ampinvt External Temperature Status': Sending state 'Normal'
+[23:04:31][D][sensor:098]: 'Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:31][D][text_sensor:069]: 'Ampinvt Charging Status': Sending state 'Not Charging'
+[23:04:31][D][sensor:098]: 'Equal Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:31][D][text_sensor:069]: 'Ampinvt Equalising Status': Sending state 'Not Equalising'
+[23:04:31][D][sensor:098]: 'MPPT Tracking Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:31][D][text_sensor:069]: 'Ampinvt MPPT Tracking Status': Sending state 'Not Tracking'
+[23:04:31][D][sensor:098]: 'Float Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:31][D][text_sensor:069]: 'Ampinvt Float Charging Status': Sending state 'Not Float Charging'
+[23:04:31][D][sensor:098]: 'Charge Current Limit Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:31][D][text_sensor:069]: 'Ampinvt Charge Current Limit Status': Sending state 'Normal'
+[23:04:31][D][sensor:098]: 'Charge Derating Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:31][D][text_sensor:069]: 'Ampinvt Charge Derating Status': Sending state 'Normal'
+[23:04:31][D][sensor:098]: 'Remote Prohibit Charging Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:31][D][text_sensor:069]: 'Ampinvt Remote Prohib Status': Sending state 'Normal'
+[23:04:31][D][sensor:098]: 'Panel Overvoltage Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:31][D][text_sensor:069]: 'Ampinvt Panel Overvoltage Status': Sending state 'Normal'
+[23:04:31][D][sensor:098]: 'Charging Output Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:31][D][text_sensor:069]: 'Ampinvt Charging Output Relay Status': Sending state 'Closed'
+[23:04:31][D][sensor:098]: 'Load Output Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:31][D][text_sensor:069]: 'Ampinvt Load Output Status': Sending state 'Closed'
+[23:04:31][D][sensor:098]: 'Fan Relay Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:31][D][text_sensor:069]: 'Ampinvt Fan Relay Status': Sending state 'Closed'
+[23:04:31][D][sensor:098]: 'Overcharge Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:31][D][text_sensor:069]: 'Ampinvt Overcharge Protection Status': Sending state 'Normal'
+[23:04:31][D][sensor:098]: 'Overvoltage Protection Status': Sending state 0.00000  with 0 decimals of accuracy
+[23:04:31][D][text_sensor:069]: 'Ampinvt Overvoltage Protection Status': Sending state 'Normal'
+[23:04:31][D][sensor:098]: 'Solar Panel Voltage': Sending state 0.10000 V with 1 decimals of accuracy
+[23:04:31][D][sensor:098]: 'Solar Battery Voltage': Sending state 13.20000 V with 2 decimals of accuracy
+[23:04:31][D][sensor:098]: 'Solar Charge Current': Sending state 0.00000 A with 2 decimals of accuracy
+[23:04:31][D][sensor:098]: 'Solar Controller Internal Temperature': Sending state 22.40000 °C with 1 decimals of accuracy
+[23:04:31][D][sensor:098]: 'Solar Battery Temperature': Sending state 22.60000 °C with 1 decimals of accuracy
+[23:04:31][D][sensor:098]: 'Solar Daily Yield': Sending state 683.00000 W with 1 decimals of accuracy
+[23:04:31][D][sensor:098]: 'Solar Total Yield': Sending state 290.78403 kW with 1 decimals of accuracy
+[23:04:31][D][uart_debug:114]: <<< 01:B3:01:00:00:00:00:01:05:28:00:00:00:E0:00:00:00:E2:00:00:00:00:02:AB:00:04:6F:E0:00:00:00:00:00:00:00:00:A5

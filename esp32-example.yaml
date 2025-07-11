@@ -1,0 +1,135 @@
+substitutions:
+  device_name: ampinvt-solar-controller
+  friendly_name: Ampinvt Solar Controller
+  device_description: "Monitor a Ampinvt Solar Controller via RS485"
+  external_components_source: github://syssi/esphome-ampinvt@main
+  tx_pin: GPIO16
+  rx_pin: GPIO17
+
+esphome:
+  name: ${device_name}
+  friendly_name: ${friendly_name}
+  comment: ${device_description}
+  min_version: 2024.6.0
+  project:
+    name: "syssi.esphome-ampinvt"
+    version: 1.0.0
+
+esp32:
+  board: wemos_d1_mini32
+  framework:
+    type: esp-idf
+
+external_components:
+  - source: ${external_components_source}
+    refresh: 0s
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+ota:
+  platform: esphome
+
+logger:
+  level: DEBUG
+
+# If you use Home Assistant please remove this `mqtt` section and uncomment the `api` component!
+# The native API has many advantages over MQTT: https://esphome.io/components/api.html#advantages-over-mqtt
+mqtt:
+  broker: !secret mqtt_host
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  id: mqtt_client
+
+# api:
+
+uart:
+  - id: uart_0
+    baud_rate: 9600
+    tx_pin: ${tx_pin}
+    rx_pin: ${rx_pin}
+
+ampinvt_modbus:
+  - id: modbus0
+    uart_id: uart_0
+
+ampinvt:
+  - id: ampinvt0
+    ampinvt_modbus_id: modbus0
+    address: 0x01
+    update_interval: 2s
+    # Optional: Number of failed attempts before device is marked offline (default: 15, 0 = disable offline tracking)
+    # max_no_response_count: 15
+
+binary_sensor:
+  - platform: ampinvt
+    ampinvt_id: ampinvt0
+    operating_status:
+      name: "Operating Status"
+    battery_status:
+      name: "Battery Status"
+    fan_status:
+      name: "Fan Status"
+    overheat_status:
+      name: "Overheat Status"
+    dc_output_status:
+      name: "DC Output Status"
+    internal_temperature1_status:
+      name: "Internal Temperature 1 Status"
+    internal_temperature2_status:
+      name: "Internal Temperature 2 Status"
+    external_temperature_status:
+      name: "External Temperature Status"
+    charging_status:
+      name: "Charging Status"
+    equal_charging_status:
+      name: "Equal Charging Status"
+    mppt_tracking_status:
+      name: "MPPT Tracking Status"
+    float_charging_status:
+      name: "Float Charging Status"
+    charge_current_limit_status:
+      name: "Charge Current Limit Status"
+    charge_derating_status:
+      name: "Charge Derating Status"
+    remote_prohibit_charging_status:
+      name: "Remote Prohibit Charging Status"
+    pv_overvoltage_status:
+      name: "PV Overvoltage Status"
+    charge_output_relay_status:
+      name: "Charge Output Relay Status"
+    load_output_status:
+      name: "Load Output Status"
+    fan_relay_status:
+      name: "Fan Relay Status"
+    overcharge_protection_status:
+      name: "Overcharge Protection Status"
+    overvoltage_protection_status:
+      name: "Overvoltage Protection Status"
+    online_status:
+      name: "Online Status"
+
+sensor:
+  - platform: ampinvt
+    ampinvt_id: ampinvt0
+    pv_voltage:
+      name: "PV Voltage"
+    battery_voltage:
+      name: "Battery Voltage"
+    charge_current:
+      name: "Charge Current"
+    mppt_temperature:
+      name: "MPPT Temperature"
+    battery_temperature:
+      name: "Battery Temperature"
+    today_yield:
+      name: "Today Yield"
+    generation_total:
+      name: "Total Generation"
+
+text_sensor:
+  - platform: ampinvt
+    ampinvt_id: ampinvt0
+    operation_status:
+      name: "Operation Status"
