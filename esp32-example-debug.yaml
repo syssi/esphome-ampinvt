@@ -1,0 +1,13 @@
+<<: !include esp32-example.yaml
+
+logger:
+  level: DEBUG
+
+uart:
+  id: uart_0
+  tx_pin: GPIO17
+  rx_pin: GPIO16
+  baud_rate: 9600
+  debug:
+    direction: BOTH
+    dummy_receiver: false
