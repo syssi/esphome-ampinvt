@@ -10,6 +10,7 @@ ESPHome component to monitor and control an Ampinvt MPPT solar controller via RS
 
 ## Supported devices
 
+* AP-60C
 * AP-80A
 
 ## Requirements
