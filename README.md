@@ -121,15 +121,6 @@ esphome run esp32-example.yaml
 [I][ampinvt:152]: Settings frame decoder not implemented yet.
 ```
 
-## Protocol
-
-The Ampinvt controllers use a custom protocol similar to Modbus:
-
-| Function | Command | Address | Data Length | Description       |
-|----------|---------|---------|-------------|-------------------|
-| Status   | 0xB3    | Device  | 35-36 bytes | Device status     |
-| Settings | 0xB2    | Device  | Variable    | Device settings   |
-
 ## Known issues
 
 None.
