@@ -86,9 +86,6 @@ bool AmpinvtModbus::parse_ampinvt_modbus_byte_(uint8_t byte) {
   }
 }
 
-return true;
-}
-
 void AmpinvtModbus::dump_config() {
   ESP_LOGCONFIG(TAG, "AmpinvtModbus:");
   LOG_PIN("  Flow Control Pin: ", this->flow_control_pin_);
