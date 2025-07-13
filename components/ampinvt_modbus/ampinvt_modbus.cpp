@@ -45,17 +45,13 @@ bool AmpinvtModbus::parse_ampinvt_modbus_byte_(uint8_t byte) {
     const uint8_t *raw = &this->rx_buffer_[0];
     uint8_t command = raw[1];
 
-    uint8_t expected_frame_size;
-    if (command == AMPINVT_COMMAND_STATUS) {
-      expected_frame_size = AMPINVT_FRAME_SIZE_STATUS;
-    } else if (command == AMPINVT_COMMAND_SETTINGS) {
-      expected_frame_size = AMPINVT_FRAME_SIZE_SETTINGS;
-    } else {
-      // Unknown command, wait for more bytes or timeout
-      if (at >= 100) {  // Prevent buffer overflow
-        return false;
-      }
-      return true;
+    uint8_t expected_frame_size = (command == AMPINVT_COMMAND_STATUS)     ? AMPINVT_FRAME_SIZE_STATUS
+                                  : (command == AMPINVT_COMMAND_SETTINGS) ? AMPINVT_FRAME_SIZE_SETTINGS
+                                                                          : 0;
+
+    if (expected_frame_size == 0) {
+      // Unknown command, flush buffer immediately
+      return false;
     }
 
     if (at < expected_frame_size - 1) {
