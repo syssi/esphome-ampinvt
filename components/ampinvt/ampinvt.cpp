@@ -44,13 +44,14 @@ static const uint8_t OVERCHARGE_PROTECTION = 0x10;   // 00010000
 static const uint8_t OVERVOLTAGE_PROTECTION = 0x20;  // 00100000
 }  // namespace ControlStatusBits
 
-void Ampinvt::on_ampinvt_modbus_data(const uint8_t &function, const std::vector<uint8_t> &data) {
+void Ampinvt::on_ampinvt_modbus_data(const std::vector<uint8_t> &data) {
+  uint8_t function = data[1];
+
   this->reset_online_status_tracker_();
 
   if (function == AMPINVT_COMMAND_STATUS) {
-    // Data starts from byte 2 (excluding address and function)
     this->on_status_data_(data);
-    this->send(AMPINVT_COMMAND_SETTINGS, 0x00, 0x00);
+    // this->send(AMPINVT_COMMAND_SETTINGS, 0x00, 0x00);
     return;
   }
 
@@ -130,7 +131,7 @@ void Ampinvt::on_status_data_(const std::vector<uint8_t> &data) {
 
   this->publish_state_(this->battery_temperature_sensor_, ((int16_t) ampinvt_get_16bit(16)) * 0.1f);
 
-  this->publish_state_(this->today_yield_sensor_, (float) ampinvt_get_16bit(22));
+  this->publish_state_(this->today_yield_sensor_, (float) ampinvt_get_32bit(20));
   this->publish_state_(this->generation_total_sensor_, (float) ampinvt_get_32bit(24) * 0.001f);
 
   if (chg_status_byte & ChargingStatusBits::CHARGING) {

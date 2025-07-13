@@ -48,15 +48,13 @@ bool AmpinvtModbus::parse_ampinvt_modbus_byte_(uint8_t byte) {
     // We have received all 37 bytes, process the frame
     const uint8_t *raw = &this->rx_buffer_[0];
     uint8_t address = raw[0];
-    uint8_t function = raw[1];
 
-    // Pass complete frame including address and function bytes
     std::vector<uint8_t> data(this->rx_buffer_.begin(), this->rx_buffer_.end());
 
     bool found = false;
     for (auto *device : this->devices_) {
       if (device->address_ == address) {
-        device->on_ampinvt_modbus_data(function, data);
+        device->on_ampinvt_modbus_data(data);
         found = true;
       }
     }
@@ -86,11 +84,11 @@ void AmpinvtModbus::send(uint8_t address, uint8_t function, uint16_t start_addre
   uint8_t frame[8];
   frame[0] = address;
   frame[1] = function;
-  frame[2] = 0x01;  // Fixed byte
-  frame[3] = 0x00;  // Fixed byte
-  frame[4] = 0x00;  // Fixed byte
-  frame[5] = 0x00;  // Fixed byte
-  frame[6] = 0x00;  // Fixed byte
+  frame[2] = 0x01;
+  frame[3] = 0x00;
+  frame[4] = 0x00;
+  frame[5] = 0x00;
+  frame[6] = 0x00;
 
   // Calculate checksum (simple sum of all bytes)
   uint8_t checksum = 0;

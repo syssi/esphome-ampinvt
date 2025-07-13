@@ -112,7 +112,7 @@ class Ampinvt : public PollingComponent, public ampinvt_modbus::AmpinvtModbusDev
 
   void dump_config() override;
 
-  void on_ampinvt_modbus_data(const uint8_t &function, const std::vector<uint8_t> &data) override;
+  void on_ampinvt_modbus_data(const std::vector<uint8_t> &data) override;
 
   void update() override;
 
