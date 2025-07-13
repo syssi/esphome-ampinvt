@@ -42,22 +42,21 @@ bool AmpinvtModbus::parse_ampinvt_modbus_byte_(uint8_t byte) {
   const uint8_t *raw = &this->rx_buffer_[0];
   uint8_t frame_len = 0;
 
-  if (at == 0)
+  if (at == 0) {
     return true;
+  }
 
-  if (at == 1) {
-    uint8_t command = raw[1];
-    switch (command) {
-      case AMPINVT_COMMAND_STATUS:
-        frame_len = AMPINVT_FRAME_SIZE_STATUS;
-        break;
-      case AMPINVT_COMMAND_SETTINGS:
-        frame_len = AMPINVT_FRAME_SIZE_SETTINGS;
-        break;
-      default:
-        // Unknown command, flush buffer immediately
-        return false;
-    }
+  uint8_t command = raw[1];
+  switch (command) {
+    case AMPINVT_COMMAND_STATUS:
+      frame_len = AMPINVT_FRAME_SIZE_STATUS;
+      break;
+    case AMPINVT_COMMAND_SETTINGS:
+      frame_len = AMPINVT_FRAME_SIZE_SETTINGS;
+      break;
+    default:
+      // Unknown command, flush buffer immediately
+      return false;
   }
 
   if (at < frame_len - 1) {
@@ -80,10 +79,10 @@ bool AmpinvtModbus::parse_ampinvt_modbus_byte_(uint8_t byte) {
     if (!found) {
       ESP_LOGW(TAG, "Got Ampinvt frame from unknown address 0x%02X!", address);
     }
-
-    // return false to reset buffer
-    return false;
   }
+
+  // return false to reset buffer
+  return false;
 }
 
 void AmpinvtModbus::dump_config() {
