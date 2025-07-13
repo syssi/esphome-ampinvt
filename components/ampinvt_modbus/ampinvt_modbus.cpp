@@ -39,48 +39,54 @@ void AmpinvtModbus::loop() {
 bool AmpinvtModbus::parse_ampinvt_modbus_byte_(uint8_t byte) {
   size_t at = this->rx_buffer_.size();
   this->rx_buffer_.push_back(byte);
+  const uint8_t *raw = &this->rx_buffer_[0];
+  uint8_t frame_len = 0;
 
-  // Check if we have at least 2 bytes to determine frame type
-  if (at >= 1) {
-    const uint8_t *raw = &this->rx_buffer_[0];
+  if (at == 0)
+    return true;
+
+  if (at == 1) {
     uint8_t command = raw[1];
-
-    uint8_t expected_frame_size = (command == AMPINVT_COMMAND_STATUS)     ? AMPINVT_FRAME_SIZE_STATUS
-                                  : (command == AMPINVT_COMMAND_SETTINGS) ? AMPINVT_FRAME_SIZE_SETTINGS
-                                                                          : 0;
-
-    if (expected_frame_size == 0) {
-      // Unknown command, flush buffer immediately
-      return false;
-    }
-
-    if (at < expected_frame_size - 1) {
-      return true;
-    }
-
-    if (at == expected_frame_size - 1) {
-      // We have received all expected bytes, process the frame
-      uint8_t address = raw[0];
-
-      std::vector<uint8_t> data(this->rx_buffer_.begin(), this->rx_buffer_.end());
-
-      bool found = false;
-      for (auto *device : this->devices_) {
-        if (device->address_ == address) {
-          device->on_ampinvt_modbus_data(data);
-          found = true;
-        }
-      }
-      if (!found) {
-        ESP_LOGW(TAG, "Got Ampinvt frame from unknown address 0x%02X!", address);
-      }
-
-      // return false to reset buffer
-      return false;
+    switch (command) {
+      case AMPINVT_COMMAND_STATUS:
+        frame_len = AMPINVT_FRAME_SIZE_STATUS;
+        break;
+      case AMPINVT_COMMAND_SETTINGS:
+        frame_len = AMPINVT_FRAME_SIZE_SETTINGS;
+        break;
+      default:
+        // Unknown command, flush buffer immediately
+        return false;
     }
   }
 
-  return true;
+  if (at < frame_len - 1) {
+    return true;
+  }
+
+  if (at == frame_len - 1) {
+    // We have received all expected bytes, process the frame
+    uint8_t address = raw[0];
+
+    std::vector<uint8_t> data(this->rx_buffer_.begin(), this->rx_buffer_.end());
+
+    bool found = false;
+    for (auto *device : this->devices_) {
+      if (device->address_ == address) {
+        device->on_ampinvt_modbus_data(data);
+        found = true;
+      }
+    }
+    if (!found) {
+      ESP_LOGW(TAG, "Got Ampinvt frame from unknown address 0x%02X!", address);
+    }
+
+    // return false to reset buffer
+    return false;
+  }
+}
+
+return true;
 }
 
 void AmpinvtModbus::dump_config() {
