@@ -61,12 +61,12 @@ void Ampinvt::on_ampinvt_modbus_data(const std::vector<uint8_t> &data) {
   }
 
   ESP_LOGW(TAG, "Unhandled response (%zu bytes) received: %s", data.size(),
-           format_hex_pretty(&data.front(), data.size()).c_str());
+           format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
 }
 
 void Ampinvt::on_status_data_(const std::vector<uint8_t> &data) {
   ESP_LOGI(TAG, "Status frame (%d bytes) received", data.size());
-  ESP_LOGD(TAG, "  %s", format_hex_pretty(&data.front(), data.size()).c_str());
+  ESP_LOGD(TAG, "  %s", format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
 
   if (data.size() < 37) {
     ESP_LOGW(TAG, "Invalid data size for status frame: %zu", data.size());
@@ -143,7 +143,7 @@ void Ampinvt::on_status_data_(const std::vector<uint8_t> &data) {
 
 void Ampinvt::on_settings_data_(const std::vector<uint8_t> &data) {
   ESP_LOGI(TAG, "Settings frame (%d bytes) received", data.size());
-  ESP_LOGD(TAG, "  %s", format_hex_pretty(&data.front(), data.size()).c_str());
+  ESP_LOGD(TAG, "  %s", format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
 
   if (data.size() < 64) {
     ESP_LOGW(TAG, "Invalid data size for settings frame: %zu", data.size());
