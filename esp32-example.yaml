@@ -10,7 +10,6 @@ esphome:
   name: ${device_name}
   friendly_name: ${friendly_name}
   comment: ${device_description}
-  min_version: 2024.6.0
   project:
     name: "syssi.esphome-ampinvt"
     version: 1.1.0

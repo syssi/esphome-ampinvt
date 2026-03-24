@@ -29,7 +29,8 @@ AMPINVT_COMPONENT_SCHEMA = cv.Schema(
     }
 )
 
-CONFIG_SCHEMA = (
+CONFIG_SCHEMA = cv.All(
+    cv.require_esphome_version(2024, 12, 0),
     cv.Schema(
         {
             cv.GenerateID(): cv.declare_id(Ampinvt),
@@ -39,7 +40,7 @@ CONFIG_SCHEMA = (
         }
     )
     .extend(cv.polling_component_schema("5s"))
-    .extend(ampinvt_modbus.ampinvt_modbus_device_schema(0x01))
+    .extend(ampinvt_modbus.ampinvt_modbus_device_schema(0x01)),
 )
 
 

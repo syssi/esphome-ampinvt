@@ -15,7 +15,7 @@ ESPHome component to monitor and control an Ampinvt MPPT solar controller via RS
 
 ## Requirements
 
-* [ESPHome 2024.6.0 or higher](https://github.com/esphome/esphome/releases).
+* [ESPHome 2024.12.0 or higher](https://github.com/esphome/esphome/releases).
 * ESP32 or ESP8266 board
 * RS485 to TTL module (recommended: HW-0519 with auto flow control)
 
