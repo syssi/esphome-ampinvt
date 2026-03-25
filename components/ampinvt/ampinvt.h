@@ -117,38 +117,38 @@ class Ampinvt : public PollingComponent, public ampinvt_modbus::AmpinvtModbusDev
   void update() override;
 
  protected:
-  binary_sensor::BinarySensor *operating_status_binary_sensor_;
-  binary_sensor::BinarySensor *battery_status_binary_sensor_;
-  binary_sensor::BinarySensor *fan_status_binary_sensor_;
-  binary_sensor::BinarySensor *overheat_status_binary_sensor_;
-  binary_sensor::BinarySensor *dc_output_status_binary_sensor_;
-  binary_sensor::BinarySensor *internal_temperature1_status_binary_sensor_;
-  binary_sensor::BinarySensor *internal_temperature2_status_binary_sensor_;
-  binary_sensor::BinarySensor *external_temperature_status_binary_sensor_;
-  binary_sensor::BinarySensor *charging_status_binary_sensor_;
-  binary_sensor::BinarySensor *equal_charging_status_binary_sensor_;
-  binary_sensor::BinarySensor *mppt_tracking_status_binary_sensor_;
-  binary_sensor::BinarySensor *float_charging_status_binary_sensor_;
-  binary_sensor::BinarySensor *charge_current_limit_status_binary_sensor_;
-  binary_sensor::BinarySensor *charge_derating_status_binary_sensor_;
-  binary_sensor::BinarySensor *remote_prohibit_charging_status_binary_sensor_;
-  binary_sensor::BinarySensor *pv_overvoltage_status_binary_sensor_;
-  binary_sensor::BinarySensor *charge_output_relay_status_binary_sensor_;
-  binary_sensor::BinarySensor *load_output_status_binary_sensor_;
-  binary_sensor::BinarySensor *fan_relay_status_binary_sensor_;
-  binary_sensor::BinarySensor *overcharge_protection_status_binary_sensor_;
-  binary_sensor::BinarySensor *overvoltage_protection_status_binary_sensor_;
-  binary_sensor::BinarySensor *online_status_binary_sensor_;
+  binary_sensor::BinarySensor *operating_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *battery_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *fan_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *overheat_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *dc_output_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *internal_temperature1_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *internal_temperature2_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *external_temperature_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *charging_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *equal_charging_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *mppt_tracking_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *float_charging_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *charge_current_limit_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *charge_derating_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *remote_prohibit_charging_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *pv_overvoltage_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *charge_output_relay_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *load_output_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *fan_relay_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *overcharge_protection_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *overvoltage_protection_status_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *online_status_binary_sensor_{nullptr};
 
-  sensor::Sensor *pv_voltage_sensor_;
-  sensor::Sensor *battery_voltage_sensor_;
-  sensor::Sensor *charge_current_sensor_;
-  sensor::Sensor *mppt_temperature_sensor_;
-  sensor::Sensor *battery_temperature_sensor_;
-  sensor::Sensor *today_yield_sensor_;
-  sensor::Sensor *generation_total_sensor_;
+  sensor::Sensor *pv_voltage_sensor_{nullptr};
+  sensor::Sensor *battery_voltage_sensor_{nullptr};
+  sensor::Sensor *charge_current_sensor_{nullptr};
+  sensor::Sensor *mppt_temperature_sensor_{nullptr};
+  sensor::Sensor *battery_temperature_sensor_{nullptr};
+  sensor::Sensor *today_yield_sensor_{nullptr};
+  sensor::Sensor *generation_total_sensor_{nullptr};
 
-  text_sensor::TextSensor *operation_status_text_sensor_;
+  text_sensor::TextSensor *operation_status_text_sensor_{nullptr};
 
   uint8_t no_response_count_ = 0;
   uint8_t max_no_response_count_ = 15;
