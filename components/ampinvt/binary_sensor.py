@@ -1,6 +1,7 @@
 import esphome.codegen as cg
 from esphome.components import binary_sensor
 import esphome.config_validation as cv
+from esphome.const import ENTITY_CATEGORY_DIAGNOSTIC
 
 from . import AMPINVT_COMPONENT_SCHEMA, CONF_AMPINVT_ID
 
@@ -57,70 +58,86 @@ BINARY_SENSORS = [
 CONFIG_SCHEMA = AMPINVT_COMPONENT_SCHEMA.extend(
     {
         cv.Optional(CONF_OPERATING_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:alert-circle"
+            icon="mdi:alert-circle", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
         ),
         cv.Optional(CONF_BATTERY_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:battery-alert"
+            icon="mdi:battery-alert", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
         ),
         cv.Optional(CONF_FAN_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:fan"
+            icon="mdi:fan", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
         ),
         cv.Optional(CONF_OVERHEAT_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:thermometer-alert"
+            icon="mdi:thermometer-alert", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
         ),
         cv.Optional(CONF_DC_OUTPUT_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:alert-circle"
+            icon="mdi:alert-circle", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
         ),
         cv.Optional(
             CONF_INTERNAL_TEMPERATURE1_STATUS
-        ): binary_sensor.binary_sensor_schema(icon="mdi:thermometer"),
+        ): binary_sensor.binary_sensor_schema(
+            icon="mdi:thermometer", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
+        ),
         cv.Optional(
             CONF_INTERNAL_TEMPERATURE2_STATUS
-        ): binary_sensor.binary_sensor_schema(icon="mdi:thermometer"),
+        ): binary_sensor.binary_sensor_schema(
+            icon="mdi:thermometer", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
+        ),
         cv.Optional(
             CONF_EXTERNAL_TEMPERATURE_STATUS
-        ): binary_sensor.binary_sensor_schema(icon="mdi:thermometer"),
+        ): binary_sensor.binary_sensor_schema(
+            icon="mdi:thermometer", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
+        ),
         cv.Optional(CONF_CHARGING_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:battery-charging"
+            icon="mdi:battery-charging", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
         ),
         cv.Optional(CONF_EQUAL_CHARGING_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:battery-charging"
+            icon="mdi:battery-charging", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
         ),
         cv.Optional(CONF_MPPT_TRACKING_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:chart-line"
+            icon="mdi:chart-line", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
         ),
         cv.Optional(CONF_FLOAT_CHARGING_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:battery-charging"
+            icon="mdi:battery-charging", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
         ),
         cv.Optional(
             CONF_CHARGE_CURRENT_LIMIT_STATUS
-        ): binary_sensor.binary_sensor_schema(icon="mdi:current-dc"),
+        ): binary_sensor.binary_sensor_schema(
+            icon="mdi:current-dc", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
+        ),
         cv.Optional(CONF_CHARGE_DERATING_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:alert-circle"
+            icon="mdi:alert-circle", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
         ),
         cv.Optional(
             CONF_REMOTE_PROHIBIT_CHARGING_STATUS
-        ): binary_sensor.binary_sensor_schema(icon="mdi:remote"),
+        ): binary_sensor.binary_sensor_schema(
+            icon="mdi:remote", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
+        ),
         cv.Optional(CONF_PV_OVERVOLTAGE_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:flash-alert"
+            icon="mdi:flash-alert", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
         ),
         cv.Optional(
             CONF_CHARGE_OUTPUT_RELAY_STATUS
-        ): binary_sensor.binary_sensor_schema(icon="mdi:electric-switch"),
+        ): binary_sensor.binary_sensor_schema(
+            icon="mdi:electric-switch", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
+        ),
         cv.Optional(CONF_LOAD_OUTPUT_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:electric-switch"
+            icon="mdi:electric-switch", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
         ),
         cv.Optional(CONF_FAN_RELAY_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:fan"
+            icon="mdi:fan", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
         ),
         cv.Optional(
             CONF_OVERCHARGE_PROTECTION_STATUS
-        ): binary_sensor.binary_sensor_schema(icon="mdi:shield-alert"),
+        ): binary_sensor.binary_sensor_schema(
+            icon="mdi:shield-alert", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
+        ),
         cv.Optional(
             CONF_OVERVOLTAGE_PROTECTION_STATUS
-        ): binary_sensor.binary_sensor_schema(icon="mdi:shield-alert"),
+        ): binary_sensor.binary_sensor_schema(
+            icon="mdi:shield-alert", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
+        ),
         cv.Optional(CONF_ONLINE_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:connection"
+            icon="mdi:connection", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
         ),
     }
 )
