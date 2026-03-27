@@ -5,6 +5,7 @@ import esphome.config_validation as cv
 from . import AMPINVT_COMPONENT_SCHEMA, CONF_AMPINVT_ID
 
 DEPENDENCIES = ["ampinvt"]
+CODEOWNERS = ["@syssi"]
 
 CONF_OPERATION_STATUS = "operation_status"
 

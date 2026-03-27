@@ -6,6 +6,7 @@ from esphome.const import ENTITY_CATEGORY_DIAGNOSTIC
 from . import AMPINVT_COMPONENT_SCHEMA, CONF_AMPINVT_ID
 
 DEPENDENCIES = ["ampinvt"]
+CODEOWNERS = ["@syssi"]
 
 CONF_OPERATING_STATUS = "operating_status"
 CONF_BATTERY_STATUS = "battery_status"

@@ -20,6 +20,7 @@ from esphome.const import (
 from . import AMPINVT_COMPONENT_SCHEMA, CONF_AMPINVT_ID
 
 DEPENDENCIES = ["ampinvt"]
+CODEOWNERS = ["@syssi"]
 
 CONF_PV_VOLTAGE = "pv_voltage"
 CONF_CHARGE_CURRENT = "charge_current"
