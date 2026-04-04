@@ -29,60 +29,56 @@ CONF_BATTERY_TEMPERATURE = "battery_temperature"
 CONF_TODAY_YIELD = "today_yield"
 CONF_GENERATION_TOTAL = "generation_total"
 
-SENSORS = [
-    CONF_PV_VOLTAGE,
-    CONF_BATTERY_VOLTAGE,
-    CONF_CHARGE_CURRENT,
-    CONF_MPPT_TEMPERATURE,
-    CONF_BATTERY_TEMPERATURE,
-    CONF_TODAY_YIELD,
-    CONF_GENERATION_TOTAL,
-]
+# key: sensor_schema kwargs
+SENSOR_DEFS = {
+    CONF_PV_VOLTAGE: {
+        "unit_of_measurement": UNIT_VOLT,
+        "accuracy_decimals": 1,
+        "device_class": DEVICE_CLASS_VOLTAGE,
+        "state_class": STATE_CLASS_MEASUREMENT,
+    },
+    CONF_BATTERY_VOLTAGE: {
+        "unit_of_measurement": UNIT_VOLT,
+        "accuracy_decimals": 2,
+        "device_class": DEVICE_CLASS_VOLTAGE,
+        "state_class": STATE_CLASS_MEASUREMENT,
+    },
+    CONF_CHARGE_CURRENT: {
+        "unit_of_measurement": UNIT_AMPERE,
+        "accuracy_decimals": 2,
+        "device_class": DEVICE_CLASS_CURRENT,
+        "state_class": STATE_CLASS_MEASUREMENT,
+    },
+    CONF_MPPT_TEMPERATURE: {
+        "unit_of_measurement": UNIT_CELSIUS,
+        "accuracy_decimals": 1,
+        "device_class": DEVICE_CLASS_TEMPERATURE,
+        "state_class": STATE_CLASS_MEASUREMENT,
+    },
+    CONF_BATTERY_TEMPERATURE: {
+        "unit_of_measurement": UNIT_CELSIUS,
+        "accuracy_decimals": 1,
+        "device_class": DEVICE_CLASS_TEMPERATURE,
+        "state_class": STATE_CLASS_MEASUREMENT,
+    },
+    CONF_TODAY_YIELD: {
+        "unit_of_measurement": UNIT_WATT,
+        "accuracy_decimals": 0,
+        "device_class": DEVICE_CLASS_POWER,
+        "state_class": STATE_CLASS_MEASUREMENT,
+    },
+    CONF_GENERATION_TOTAL: {
+        "unit_of_measurement": UNIT_KILOWATT_HOURS,
+        "accuracy_decimals": 3,
+        "device_class": DEVICE_CLASS_ENERGY,
+        "state_class": STATE_CLASS_TOTAL_INCREASING,
+    },
+}
 
 CONFIG_SCHEMA = AMPINVT_COMPONENT_SCHEMA.extend(
     {
-        cv.Optional(CONF_PV_VOLTAGE): sensor.sensor_schema(
-            unit_of_measurement=UNIT_VOLT,
-            accuracy_decimals=1,
-            device_class=DEVICE_CLASS_VOLTAGE,
-            state_class=STATE_CLASS_MEASUREMENT,
-        ),
-        cv.Optional(CONF_BATTERY_VOLTAGE): sensor.sensor_schema(
-            unit_of_measurement=UNIT_VOLT,
-            accuracy_decimals=2,
-            device_class=DEVICE_CLASS_VOLTAGE,
-            state_class=STATE_CLASS_MEASUREMENT,
-        ),
-        cv.Optional(CONF_CHARGE_CURRENT): sensor.sensor_schema(
-            unit_of_measurement=UNIT_AMPERE,
-            accuracy_decimals=2,
-            device_class=DEVICE_CLASS_CURRENT,
-            state_class=STATE_CLASS_MEASUREMENT,
-        ),
-        cv.Optional(CONF_MPPT_TEMPERATURE): sensor.sensor_schema(
-            unit_of_measurement=UNIT_CELSIUS,
-            accuracy_decimals=1,
-            device_class=DEVICE_CLASS_TEMPERATURE,
-            state_class=STATE_CLASS_MEASUREMENT,
-        ),
-        cv.Optional(CONF_BATTERY_TEMPERATURE): sensor.sensor_schema(
-            unit_of_measurement=UNIT_CELSIUS,
-            accuracy_decimals=1,
-            device_class=DEVICE_CLASS_TEMPERATURE,
-            state_class=STATE_CLASS_MEASUREMENT,
-        ),
-        cv.Optional(CONF_TODAY_YIELD): sensor.sensor_schema(
-            unit_of_measurement=UNIT_WATT,
-            accuracy_decimals=0,
-            device_class=DEVICE_CLASS_POWER,
-            state_class=STATE_CLASS_MEASUREMENT,
-        ),
-        cv.Optional(CONF_GENERATION_TOTAL): sensor.sensor_schema(
-            unit_of_measurement=UNIT_KILOWATT_HOURS,
-            accuracy_decimals=3,
-            device_class=DEVICE_CLASS_ENERGY,
-            state_class=STATE_CLASS_TOTAL_INCREASING,
-        ),
+        cv.Optional(key): sensor.sensor_schema(**kwargs)
+        for key, kwargs in SENSOR_DEFS.items()
     }
 )
 
@@ -90,7 +86,7 @@ CONFIG_SCHEMA = AMPINVT_COMPONENT_SCHEMA.extend(
 async def to_code(config):
     hub = await cg.get_variable(config[CONF_AMPINVT_ID])
 
-    for key in SENSORS:
+    for key in SENSOR_DEFS:
         if key in config:
             conf = config[key]
             sens = await sensor.new_sensor(conf)
