@@ -31,115 +31,99 @@ CONF_OVERCHARGE_PROTECTION_STATUS = "overcharge_protection_status"
 CONF_OVERVOLTAGE_PROTECTION_STATUS = "overvoltage_protection_status"
 CONF_ONLINE_STATUS = "online_status"
 
-BINARY_SENSORS = [
-    CONF_OPERATING_STATUS,
-    CONF_BATTERY_STATUS,
-    CONF_FAN_STATUS,
-    CONF_OVERHEAT_STATUS,
-    CONF_DC_OUTPUT_STATUS,
-    CONF_INTERNAL_TEMPERATURE1_STATUS,
-    CONF_INTERNAL_TEMPERATURE2_STATUS,
-    CONF_EXTERNAL_TEMPERATURE_STATUS,
-    CONF_CHARGING_STATUS,
-    CONF_EQUAL_CHARGING_STATUS,
-    CONF_MPPT_TRACKING_STATUS,
-    CONF_FLOAT_CHARGING_STATUS,
-    CONF_CHARGE_CURRENT_LIMIT_STATUS,
-    CONF_CHARGE_DERATING_STATUS,
-    CONF_REMOTE_PROHIBIT_CHARGING_STATUS,
-    CONF_PV_OVERVOLTAGE_STATUS,
-    CONF_CHARGE_OUTPUT_RELAY_STATUS,
-    CONF_LOAD_OUTPUT_STATUS,
-    CONF_FAN_RELAY_STATUS,
-    CONF_OVERCHARGE_PROTECTION_STATUS,
-    CONF_OVERVOLTAGE_PROTECTION_STATUS,
-    CONF_ONLINE_STATUS,
-]
+# key: binary_sensor_schema kwargs
+BINARY_SENSOR_DEFS = {
+    CONF_OPERATING_STATUS: {
+        "icon": "mdi:alert-circle",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_BATTERY_STATUS: {
+        "icon": "mdi:battery-alert",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_FAN_STATUS: {"icon": "mdi:fan", "entity_category": ENTITY_CATEGORY_DIAGNOSTIC},
+    CONF_OVERHEAT_STATUS: {
+        "icon": "mdi:thermometer-alert",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_DC_OUTPUT_STATUS: {
+        "icon": "mdi:alert-circle",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_INTERNAL_TEMPERATURE1_STATUS: {
+        "icon": "mdi:thermometer",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_INTERNAL_TEMPERATURE2_STATUS: {
+        "icon": "mdi:thermometer",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_EXTERNAL_TEMPERATURE_STATUS: {
+        "icon": "mdi:thermometer",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_CHARGING_STATUS: {
+        "icon": "mdi:battery-charging",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_EQUAL_CHARGING_STATUS: {
+        "icon": "mdi:battery-charging",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_MPPT_TRACKING_STATUS: {
+        "icon": "mdi:chart-line",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_FLOAT_CHARGING_STATUS: {
+        "icon": "mdi:battery-charging",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_CHARGE_CURRENT_LIMIT_STATUS: {
+        "icon": "mdi:current-dc",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_CHARGE_DERATING_STATUS: {
+        "icon": "mdi:alert-circle",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_REMOTE_PROHIBIT_CHARGING_STATUS: {
+        "icon": "mdi:remote",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_PV_OVERVOLTAGE_STATUS: {
+        "icon": "mdi:flash-alert",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_CHARGE_OUTPUT_RELAY_STATUS: {
+        "icon": "mdi:electric-switch",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_LOAD_OUTPUT_STATUS: {
+        "icon": "mdi:electric-switch",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_FAN_RELAY_STATUS: {
+        "icon": "mdi:fan",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_OVERCHARGE_PROTECTION_STATUS: {
+        "icon": "mdi:shield-alert",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_OVERVOLTAGE_PROTECTION_STATUS: {
+        "icon": "mdi:shield-alert",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+    CONF_ONLINE_STATUS: {
+        "icon": "mdi:connection",
+        "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
+    },
+}
 
 CONFIG_SCHEMA = AMPINVT_COMPONENT_SCHEMA.extend(
     {
-        cv.Optional(CONF_OPERATING_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:alert-circle", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(CONF_BATTERY_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:battery-alert", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(CONF_FAN_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:fan", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(CONF_OVERHEAT_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:thermometer-alert", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(CONF_DC_OUTPUT_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:alert-circle", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(
-            CONF_INTERNAL_TEMPERATURE1_STATUS
-        ): binary_sensor.binary_sensor_schema(
-            icon="mdi:thermometer", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(
-            CONF_INTERNAL_TEMPERATURE2_STATUS
-        ): binary_sensor.binary_sensor_schema(
-            icon="mdi:thermometer", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(
-            CONF_EXTERNAL_TEMPERATURE_STATUS
-        ): binary_sensor.binary_sensor_schema(
-            icon="mdi:thermometer", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(CONF_CHARGING_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:battery-charging", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(CONF_EQUAL_CHARGING_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:battery-charging", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(CONF_MPPT_TRACKING_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:chart-line", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(CONF_FLOAT_CHARGING_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:battery-charging", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(
-            CONF_CHARGE_CURRENT_LIMIT_STATUS
-        ): binary_sensor.binary_sensor_schema(
-            icon="mdi:current-dc", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(CONF_CHARGE_DERATING_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:alert-circle", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(
-            CONF_REMOTE_PROHIBIT_CHARGING_STATUS
-        ): binary_sensor.binary_sensor_schema(
-            icon="mdi:remote", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(CONF_PV_OVERVOLTAGE_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:flash-alert", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(
-            CONF_CHARGE_OUTPUT_RELAY_STATUS
-        ): binary_sensor.binary_sensor_schema(
-            icon="mdi:electric-switch", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(CONF_LOAD_OUTPUT_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:electric-switch", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(CONF_FAN_RELAY_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:fan", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(
-            CONF_OVERCHARGE_PROTECTION_STATUS
-        ): binary_sensor.binary_sensor_schema(
-            icon="mdi:shield-alert", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(
-            CONF_OVERVOLTAGE_PROTECTION_STATUS
-        ): binary_sensor.binary_sensor_schema(
-            icon="mdi:shield-alert", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
-        cv.Optional(CONF_ONLINE_STATUS): binary_sensor.binary_sensor_schema(
-            icon="mdi:connection", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
-        ),
+        cv.Optional(key): binary_sensor.binary_sensor_schema(**kwargs)
+        for key, kwargs in BINARY_SENSOR_DEFS.items()
     }
 )
 
@@ -147,7 +131,7 @@ CONFIG_SCHEMA = AMPINVT_COMPONENT_SCHEMA.extend(
 async def to_code(config):
     hub = await cg.get_variable(config[CONF_AMPINVT_ID])
 
-    for key in BINARY_SENSORS:
+    for key in BINARY_SENSOR_DEFS:
         if key in config:
             conf = config[key]
             sens = await binary_sensor.new_binary_sensor(conf)
