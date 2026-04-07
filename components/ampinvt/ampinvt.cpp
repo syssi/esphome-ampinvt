@@ -131,7 +131,7 @@ void Ampinvt::on_status_data_(const std::vector<uint8_t> &data) {
 
   this->publish_state_(this->battery_temperature_sensor_, ((int16_t) ampinvt_get_16bit(16)) * 0.1f);
 
-  this->publish_state_(this->today_yield_sensor_, (float) ampinvt_get_32bit(20) * 0.001f);
+  this->publish_state_(this->today_yield_sensor_, (float) ampinvt_get_32bit(20));
   this->publish_state_(this->generation_total_sensor_, (float) ampinvt_get_32bit(24) * 0.001f);
 
   if (chg_status_byte & ChargingStatusBits::CHARGING) {
