@@ -109,9 +109,7 @@ class Ampinvt : public PollingComponent, public ampinvt_modbus::AmpinvtModbusDev
   void set_generation_total_sensor(sensor::Sensor *generation_total_sensor) {
     generation_total_sensor_ = generation_total_sensor;
   }
-  void set_nominal_voltage_sensor(sensor::Sensor *nominal_voltage_sensor) {
-    nominal_voltage_sensor_ = nominal_voltage_sensor;
-  }
+  void set_rated_voltage_sensor(sensor::Sensor *rated_voltage_sensor) { rated_voltage_sensor_ = rated_voltage_sensor; }
   void set_max_charge_current_limit_sensor(sensor::Sensor *max_charge_current_limit_sensor) {
     max_charge_current_limit_sensor_ = max_charge_current_limit_sensor;
   }
@@ -159,7 +157,7 @@ class Ampinvt : public PollingComponent, public ampinvt_modbus::AmpinvtModbusDev
   sensor::Sensor *battery_temperature_sensor_{nullptr};
   sensor::Sensor *today_yield_sensor_{nullptr};
   sensor::Sensor *generation_total_sensor_{nullptr};
-  sensor::Sensor *nominal_voltage_sensor_{nullptr};
+  sensor::Sensor *rated_voltage_sensor_{nullptr};
   sensor::Sensor *max_charge_current_limit_sensor_{nullptr};
 
   Protocol protocol_{Protocol::AMPINVT};
