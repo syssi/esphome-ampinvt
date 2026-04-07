@@ -16,6 +16,11 @@ static const char *const OPERATION_STATUS_CHARGING = "Charging";
 static const char *const OPERATION_STATUS_NOT_CHARGING = "Not Charging";
 static const char *const OPERATION_STATUS_OFFLINE = "Offline";
 
+static constexpr const char *const BATTERY_TYPES[] = {"Lead-acid maintenance free", "Lead-acid Gel", "Lead-acid liquid",
+                                                      "Lithium"};
+static constexpr const char *const LOAD_CONTROL[] = {"Off", "Auto", "Time control", "Light control", "Remote control"};
+static constexpr const char *const BAUD_RATES[] = {"", "1200", "2400", "4800", "9600"};
+
 namespace OperationStatusBits {
 static const uint8_t OPERATING = 0x1;               // 00000001
 static const uint8_t BATTERY = 0x2;                 // 00000010
@@ -54,6 +59,7 @@ void Ampinvt::on_ampinvt_modbus_data(const std::vector<uint8_t> &data) {
   switch (function) {
     case AMPINVT_COMMAND_STATUS:
       this->on_ampinvt_status_data_(data);
+      this->send(AMPINVT_COMMAND_SETTINGS, 0x00, 0x00);
       return;
     case AMPINVT_COMMAND_SETTINGS:
       this->on_ampinvt_settings_data_(data);
@@ -157,7 +163,35 @@ void Ampinvt::on_ampinvt_settings_data_(const std::vector<uint8_t> &data) {
     return;
   }
 
-  ESP_LOGI(TAG, "Settings frame decoder not implemented yet");
+  auto get_16bit = [&](size_t i) -> uint16_t { return (uint16_t(data[i]) << 8) | uint16_t(data[i + 1]); };
+
+  uint8_t battery_type = data[3];
+  uint8_t load_ctrl = data[6];
+  uint8_t baud = data[8];
+
+  ESP_LOGI(TAG, "Settings:");
+  ESP_LOGI(TAG, "  Battery type:        %s (%u)", battery_type < 4 ? BATTERY_TYPES[battery_type] : "Unknown",
+           battery_type);
+  ESP_LOGI(TAG, "  Identification:      %s", data[4] == 0 ? "Auto recognition" : "Manual setting");
+  ESP_LOGI(TAG, "  Number of batteries: %u", data[5]);
+  ESP_LOGI(TAG, "  Load control:        %s (%u)", load_ctrl < 5 ? LOAD_CONTROL[load_ctrl] : "Unknown", load_ctrl);
+  ESP_LOGI(TAG, "  Local address:       %u", data[7]);
+  ESP_LOGI(TAG, "  Baud rate:           %s bps", baud >= 1 && baud <= 4 ? BAUD_RATES[baud] : "Unknown");
+  ESP_LOGI(TAG, "  Rated voltage:       %.2f V", get_16bit(9) * 0.01f);
+  ESP_LOGI(TAG, "  Equal charge V max:  %.2f V", get_16bit(11) * 0.01f);
+  ESP_LOGI(TAG, "  Float charge V max:  %.2f V", get_16bit(13) * 0.01f);
+  ESP_LOGI(TAG, "  Discharge V min:     %.2f V", get_16bit(15) * 0.01f);
+  ESP_LOGI(TAG, "  HW max charge curr:  %.2f A", get_16bit(17) * 0.01f);
+  ESP_LOGI(TAG, "  Max charge curr:     %.2f A", get_16bit(19) * 0.01f);
+  ESP_LOGI(TAG, "  Running charge curr: %.2f A", get_16bit(21) * 0.01f);
+  ESP_LOGI(TAG, "  Model code:          0x%02X", data[23]);
+  ESP_LOGI(TAG, "  Over-discharge rec:  %.2f V", get_16bit(25) * 0.01f);
+  ESP_LOGI(TAG, "  OV protection V:     %.2f V", get_16bit(27) * 0.01f);
+  ESP_LOGI(TAG, "  OV recovery V:       %.2f V", get_16bit(29) * 0.01f);
+  ESP_LOGI(TAG, "  Light ctrl ON  PV:   %u V", get_16bit(31));
+  ESP_LOGI(TAG, "  Light ctrl OFF PV:   %u V", get_16bit(33));
+  ESP_LOGI(TAG, "  Delay turn-on:       %u s", get_16bit(35));
+  ESP_LOGI(TAG, "  Delay turn-off:      %u s", get_16bit(37));
 }
 
 void Ampinvt::on_anenji_status_data_(const std::vector<uint8_t> &data) {
