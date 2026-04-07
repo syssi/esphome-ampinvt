@@ -112,6 +112,8 @@ sensor:
       name: "Rated Voltage"
     max_charge_current_limit:
       name: "Max Charge Current Limit"
+    charging_power:
+      name: "Charging Power"
 
 text_sensor:
   - platform: ampinvt

@@ -142,8 +142,12 @@ void Ampinvt::on_ampinvt_status_data_(const std::vector<uint8_t> &data) {
                        (bool) (ctl_status_byte & ControlStatusBits::OVERVOLTAGE_PROTECTION));
 
   this->publish_state_(this->pv_voltage_sensor_, ampinvt_get_16bit(6) * 0.1f);
-  this->publish_state_(this->battery_voltage_sensor_, ampinvt_get_16bit(8) * 0.01f);
-  this->publish_state_(this->charge_current_sensor_, ampinvt_get_16bit(10) * 0.01f);
+
+  float battery_voltage = ampinvt_get_16bit(8) * 0.01f;
+  float charge_current = ampinvt_get_16bit(10) * 0.01f;
+  this->publish_state_(this->battery_voltage_sensor_, battery_voltage);
+  this->publish_state_(this->charge_current_sensor_, charge_current);
+  this->publish_state_(this->charging_power_sensor_, battery_voltage * charge_current);
 
   this->publish_state_(this->mppt_temperature_sensor_, ((int16_t) ampinvt_get_16bit(12)) * 0.1f);
 
@@ -241,8 +245,12 @@ void Ampinvt::on_anenji_status_data_(const std::vector<uint8_t> &data) {
   this->publish_state_(this->fan_relay_status_binary_sensor_, (bool) (ctl_status_byte & ControlStatusBits::FAN_RELAY));
 
   this->publish_state_(this->pv_voltage_sensor_, ampinvt_get_16bit(6) * 0.1f);
-  this->publish_state_(this->battery_voltage_sensor_, ampinvt_get_16bit(8) * 0.01f);
-  this->publish_state_(this->charge_current_sensor_, ampinvt_get_16bit(10) * 0.01f);
+
+  float battery_voltage = ampinvt_get_16bit(8) * 0.01f;
+  float charge_current = ampinvt_get_16bit(10) * 0.01f;
+  this->publish_state_(this->battery_voltage_sensor_, battery_voltage);
+  this->publish_state_(this->charge_current_sensor_, charge_current);
+  this->publish_state_(this->charging_power_sensor_, battery_voltage * charge_current);
 
   this->publish_state_(this->mppt_temperature_sensor_, ((int16_t) ampinvt_get_16bit(12)) * 0.1f);
 
@@ -309,6 +317,7 @@ void Ampinvt::publish_device_unavailable_() {
   this->publish_state_(this->generation_total_sensor_, NAN);
   this->publish_state_(this->rated_voltage_sensor_, NAN);
   this->publish_state_(this->max_charge_current_limit_sensor_, NAN);
+  this->publish_state_(this->charging_power_sensor_, NAN);
 }
 
 void Ampinvt::reset_online_status_tracker_() {
@@ -398,6 +407,7 @@ void Ampinvt::dump_config() {
   LOG_SENSOR("", "Generation Total", this->generation_total_sensor_);
   LOG_SENSOR("", "Rated Voltage", this->rated_voltage_sensor_);
   LOG_SENSOR("", "Max Charge Current Limit", this->max_charge_current_limit_sensor_);
+  LOG_SENSOR("", "Charging Power", this->charging_power_sensor_);
 
   LOG_TEXT_SENSOR("", "Operation Status", this->operation_status_text_sensor_);
 }
