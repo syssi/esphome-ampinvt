@@ -27,6 +27,8 @@ CONF_MPPT_TEMPERATURE = "mppt_temperature"
 CONF_BATTERY_TEMPERATURE = "battery_temperature"
 CONF_TODAY_YIELD = "today_yield"
 CONF_GENERATION_TOTAL = "generation_total"
+CONF_NOMINAL_VOLTAGE = "nominal_voltage"
+CONF_MAX_CHARGE_CURRENT_LIMIT = "max_charge_current_limit"
 
 # key: sensor_schema kwargs
 SENSOR_DEFS = {
@@ -71,6 +73,18 @@ SENSOR_DEFS = {
         "accuracy_decimals": 3,
         "device_class": DEVICE_CLASS_ENERGY,
         "state_class": STATE_CLASS_TOTAL_INCREASING,
+    },
+    CONF_NOMINAL_VOLTAGE: {
+        "unit_of_measurement": UNIT_VOLT,
+        "accuracy_decimals": 2,
+        "device_class": DEVICE_CLASS_VOLTAGE,
+        "state_class": STATE_CLASS_MEASUREMENT,
+    },
+    CONF_MAX_CHARGE_CURRENT_LIMIT: {
+        "unit_of_measurement": UNIT_AMPERE,
+        "accuracy_decimals": 2,
+        "device_class": DEVICE_CLASS_CURRENT,
+        "state_class": STATE_CLASS_MEASUREMENT,
     },
 }
 

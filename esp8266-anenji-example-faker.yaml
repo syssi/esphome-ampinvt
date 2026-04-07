@@ -1,0 +1,34 @@
+<<: !include esp8266-anenji-example-debug.yaml
+
+# Replay real frames captured from issue #5 (github.com/syssi/esphome-ampinvt/issues/5)
+# 0xA3 frames: real data from Marcepanfazik's working ANJ-48V-100A at 23.5V PV / 12.59V battery
+# 0xA2 frame: synthetic (no captured raw bytes available), values match issue log output:
+#   Nominal Voltage: 48.00V, Max Charge Current Limit: 100.00A, Float Voltage: 54.40V
+interval:
+  - interval: 9s
+    then:
+      # Frame 1: PV=23.5V  Bat=12.59V  Curr=7.76A  Temp=23.4°C  ExtTemp=22.7°C  Mode=Bulk Charging
+      - lambda: |-
+          id(ampinvt0).on_ampinvt_modbus_data({
+            0x01, 0xA3, 0x01, 0x00, 0x07, 0x00, 0x00, 0xEB, 0x04, 0xEB,
+            0x03, 0x08, 0x00, 0xEA, 0x00, 0x00, 0x00, 0xE3, 0x01, 0x53, 0xB2
+          });
+
+      - delay: 3s
+
+      # Frame 2: PV=23.5V  Bat=12.59V  Curr=7.72A  Temp=23.4°C  ExtTemp=22.7°C  Mode=Bulk Charging
+      - lambda: |-
+          id(ampinvt0).on_ampinvt_modbus_data({
+            0x01, 0xA3, 0x01, 0x00, 0x07, 0x00, 0x00, 0xEB, 0x04, 0xEB,
+            0x03, 0x04, 0x00, 0xEA, 0x00, 0x00, 0x00, 0xE3, 0x01, 0x53, 0xAE
+          });
+
+      - delay: 3s
+
+      # 0xA2 settings frame: Nominal=48.00V  Float=54.40V  MaxCurrent=100.00A
+      - lambda: |-
+          id(ampinvt0).on_ampinvt_modbus_data({
+            0x01, 0xA2, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0xC0,
+            0x00, 0x00, 0x15, 0x40, 0x00, 0x00, 0x00, 0x00, 0x27, 0x10,
+            0x00, 0x00, 0x00, 0x00, 0x02
+          });

@@ -9,6 +9,8 @@ static const char *const TAG = "ampinvt";
 
 static const uint8_t AMPINVT_COMMAND_STATUS = 0xB3;
 static const uint8_t AMPINVT_COMMAND_SETTINGS = 0xB2;
+static const uint8_t ANENJI_COMMAND_STATUS = 0xA3;
+static const uint8_t ANENJI_COMMAND_SETTINGS = 0xA2;
 
 static const char *const OPERATION_STATUS_CHARGING = "Charging";
 static const char *const OPERATION_STATUS_NOT_CHARGING = "Not Charging";
@@ -49,23 +51,28 @@ void Ampinvt::on_ampinvt_modbus_data(const std::vector<uint8_t> &data) {
 
   this->reset_online_status_tracker_();
 
-  if (function == AMPINVT_COMMAND_STATUS) {
-    this->on_status_data_(data);
-    // this->send(AMPINVT_COMMAND_SETTINGS, 0x00, 0x00);
-    return;
+  switch (function) {
+    case AMPINVT_COMMAND_STATUS:
+      this->on_ampinvt_status_data_(data);
+      return;
+    case AMPINVT_COMMAND_SETTINGS:
+      this->on_ampinvt_settings_data_(data);
+      return;
+    case ANENJI_COMMAND_STATUS:
+      this->on_anenji_status_data_(data);
+      return;
+    case ANENJI_COMMAND_SETTINGS:
+      this->on_anenji_settings_data_(data);
+      return;
+    default:
+      ESP_LOGW(TAG, "Unsupported function code 0x%02X in frame: %s", function,
+               format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
+      break;
   }
-
-  if (function == AMPINVT_COMMAND_SETTINGS) {
-    this->on_settings_data_(data);
-    return;
-  }
-
-  ESP_LOGW(TAG, "Unhandled response (%zu bytes) received: %s", data.size(),
-           format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
 }
 
-void Ampinvt::on_status_data_(const std::vector<uint8_t> &data) {
-  ESP_LOGI(TAG, "Status frame (%d bytes) received", data.size());
+void Ampinvt::on_ampinvt_status_data_(const std::vector<uint8_t> &data) {
+  ESP_LOGI(TAG, "Ampinvt status frame (%d bytes) received", data.size());
   ESP_LOGD(TAG, "  %s", format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
 
   if (data.size() < 37) {
@@ -141,16 +148,89 @@ void Ampinvt::on_status_data_(const std::vector<uint8_t> &data) {
   }
 }
 
-void Ampinvt::on_settings_data_(const std::vector<uint8_t> &data) {
-  ESP_LOGI(TAG, "Settings frame (%d bytes) received", data.size());
+void Ampinvt::on_ampinvt_settings_data_(const std::vector<uint8_t> &data) {
+  ESP_LOGI(TAG, "Ampinvt settings frame (%d bytes) received", data.size());
   ESP_LOGD(TAG, "  %s", format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
 
   if (data.size() < 64) {
-    ESP_LOGW(TAG, "Invalid data size for settings frame: %zu", data.size());
+    ESP_LOGW(TAG, "Invalid data size: %zu", data.size());
     return;
   }
 
   ESP_LOGI(TAG, "Settings frame decoder not implemented yet");
+}
+
+void Ampinvt::on_anenji_status_data_(const std::vector<uint8_t> &data) {
+  ESP_LOGI(TAG, "Anenji status frame (%d bytes) received", data.size());
+  ESP_LOGD(TAG, "  %s", format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
+
+  if (data.size() < 21) {
+    ESP_LOGW(TAG, "Invalid data size for status frame: %zu", data.size());
+    return;
+  }
+
+  auto ampinvt_get_16bit = [&](size_t i) -> uint16_t {
+    return (uint16_t(data[i + 0]) << 8) | (uint16_t(data[i + 1]) << 0);
+  };
+
+  uint8_t op_status_byte = data[3];
+  this->publish_state_(this->operating_status_binary_sensor_, (bool) (op_status_byte & OperationStatusBits::OPERATING));
+  this->publish_state_(this->battery_status_binary_sensor_, (bool) (op_status_byte & OperationStatusBits::BATTERY));
+  this->publish_state_(this->fan_status_binary_sensor_, (bool) (op_status_byte & OperationStatusBits::FAN));
+  this->publish_state_(this->overheat_status_binary_sensor_,
+                       (bool) (op_status_byte & OperationStatusBits::TEMPERATURE));
+  this->publish_state_(this->dc_output_status_binary_sensor_, (bool) (op_status_byte & OperationStatusBits::DC_OUTPUT));
+
+  uint8_t chg_status_byte = data[4];
+  this->publish_state_(this->charging_status_binary_sensor_, (bool) (chg_status_byte & ChargingStatusBits::CHARGING));
+  this->publish_state_(this->mppt_tracking_status_binary_sensor_,
+                       (bool) (chg_status_byte & ChargingStatusBits::MPPT_TRACKING));
+  this->publish_state_(this->float_charging_status_binary_sensor_,
+                       (bool) (chg_status_byte & ChargingStatusBits::FLOAT_CHARGING));
+  this->publish_state_(this->remote_prohibit_charging_status_binary_sensor_,
+                       (bool) (chg_status_byte & ChargingStatusBits::REMOTE_PROHIBIT_CHARGING));
+  this->publish_state_(this->pv_overvoltage_status_binary_sensor_,
+                       (bool) (chg_status_byte & ChargingStatusBits::PV_OVERVOLTAGE));
+
+  uint8_t ctl_status_byte = data[5];
+  this->publish_state_(this->charge_output_relay_status_binary_sensor_,
+                       (bool) (ctl_status_byte & ControlStatusBits::CHARGE_OUTPUT_RELAY));
+  this->publish_state_(this->load_output_status_binary_sensor_,
+                       (bool) (ctl_status_byte & ControlStatusBits::LOAD_OUTPUT));
+  this->publish_state_(this->fan_relay_status_binary_sensor_, (bool) (ctl_status_byte & ControlStatusBits::FAN_RELAY));
+
+  this->publish_state_(this->pv_voltage_sensor_, ampinvt_get_16bit(6) * 0.1f);
+  this->publish_state_(this->battery_voltage_sensor_, ampinvt_get_16bit(8) * 0.01f);
+  this->publish_state_(this->charge_current_sensor_, ampinvt_get_16bit(10) * 0.01f);
+
+  this->publish_state_(this->mppt_temperature_sensor_, ((int16_t) ampinvt_get_16bit(12)) * 0.1f);
+
+  this->publish_state_(this->battery_temperature_sensor_, ((int16_t) ampinvt_get_16bit(16)) * 0.1f);
+
+  if (chg_status_byte & ChargingStatusBits::CHARGING) {
+    this->publish_state_(this->operation_status_text_sensor_, OPERATION_STATUS_CHARGING);
+  } else {
+    this->publish_state_(this->operation_status_text_sensor_, OPERATION_STATUS_NOT_CHARGING);
+  }
+}
+
+void Ampinvt::on_anenji_settings_data_(const std::vector<uint8_t> &data) {
+  ESP_LOGI(TAG, "Anenji settings frame (%d bytes) received", data.size());
+  ESP_LOGD(TAG, "  %s", format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
+
+  if (data.size() < 26) {
+    ESP_LOGW(TAG, "Invalid data size: %zu", data.size());
+    return;
+  }
+
+  auto ampinvt_get_16bit = [&](size_t i) -> uint16_t {
+    return (uint16_t(data[i + 0]) << 8) | (uint16_t(data[i + 1]) << 0);
+  };
+
+  this->publish_state_(this->nominal_voltage_sensor_, ampinvt_get_16bit(9) * 0.01f);
+  this->publish_state_(this->max_charge_current_limit_sensor_, ampinvt_get_16bit(19) * 0.01f);
+  ESP_LOGI(TAG, "Settings: Nominal: %.2fV  MaxCurrent: %.2fA", ampinvt_get_16bit(9) * 0.01f,
+           ampinvt_get_16bit(19) * 0.01f);
 }
 
 void Ampinvt::publish_device_unavailable_() {
@@ -165,6 +245,8 @@ void Ampinvt::publish_device_unavailable_() {
   this->publish_state_(this->battery_temperature_sensor_, NAN);
   this->publish_state_(this->today_yield_sensor_, NAN);
   this->publish_state_(this->generation_total_sensor_, NAN);
+  this->publish_state_(this->nominal_voltage_sensor_, NAN);
+  this->publish_state_(this->max_charge_current_limit_sensor_, NAN);
 }
 
 void Ampinvt::reset_online_status_tracker_() {
@@ -190,8 +272,8 @@ void Ampinvt::track_online_status_() {
 void Ampinvt::update() {
   this->track_online_status_();
 
-  // Send status request command
-  this->send(AMPINVT_COMMAND_STATUS, 0x00, 0x00);
+  uint8_t cmd = (this->protocol_ == Protocol::ANENJI) ? ANENJI_COMMAND_STATUS : AMPINVT_COMMAND_STATUS;
+  this->send(cmd, 0x00, 0x00);
 }
 
 void Ampinvt::publish_state_(binary_sensor::BinarySensor *binary_sensor, const bool &state) {
@@ -218,6 +300,8 @@ void Ampinvt::publish_state_(text_sensor::TextSensor *text_sensor, const std::st
 void Ampinvt::dump_config() {
   ESP_LOGCONFIG(TAG, "Ampinvt:");
   ESP_LOGCONFIG(TAG, "  Address: 0x%02X", this->address_);
+  ESP_LOGCONFIG(TAG, "  Protocol: %s",
+                (this->protocol_ == Protocol::ANENJI) ? "Anenji (0xA2/0xA3)" : "Ampinvt (0xB2/0xB3)");
   ESP_LOGCONFIG(TAG, "  Max no response count: %d", this->max_no_response_count_);
 
   LOG_BINARY_SENSOR("", "Operating Status", this->operating_status_binary_sensor_);
@@ -250,6 +334,8 @@ void Ampinvt::dump_config() {
   LOG_SENSOR("", "Battery Temperature", this->battery_temperature_sensor_);
   LOG_SENSOR("", "Today Yield", this->today_yield_sensor_);
   LOG_SENSOR("", "Generation Total", this->generation_total_sensor_);
+  LOG_SENSOR("", "Nominal Voltage", this->nominal_voltage_sensor_);
+  LOG_SENSOR("", "Max Charge Current Limit", this->max_charge_current_limit_sensor_);
 
   LOG_TEXT_SENSOR("", "Operation Status", this->operation_status_text_sensor_);
 }
