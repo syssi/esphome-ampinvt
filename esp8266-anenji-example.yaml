@@ -1,10 +1,10 @@
 substitutions:
-  device_name: ampinvt-solar-controller
-  friendly_name: Ampinvt Solar Controller
-  device_description: "Monitor a Ampinvt Solar Controller via RS485"
+  device_name: anenji-anj48v100a
+  friendly_name: Anenji ANJ-48V-100A
+  device_description: "Monitor an Anenji ANJ-48V-100A MPPT Solar Charge Controller via RS485"
   external_components_source: github://syssi/esphome-ampinvt@main
-  tx_pin: GPIO16
-  rx_pin: GPIO17
+  tx_pin: GPIO4
+  rx_pin: GPIO5
 
 esphome:
   name: ${device_name}
@@ -14,10 +14,8 @@ esphome:
     name: "syssi.esphome-ampinvt"
     version: 1.1.0
 
-esp32:
-  board: wemos_d1_mini32
-  framework:
-    type: esp-idf
+esp8266:
+  board: d1_mini
 
 external_components:
   - source: ${external_components_source}
@@ -43,6 +41,7 @@ mqtt:
 
 # api:
 
+# RJ45 wiring: A+ = pin 6, B- = pin 3
 uart:
   - id: uart_0
     baud_rate: 9600
@@ -57,7 +56,7 @@ ampinvt:
   - id: ampinvt0
     ampinvt_modbus_id: modbus0
     address: 0x01
-    protocol: ampinvt
+    protocol: anenji
     update_interval: 2s
     # Optional: Number of failed attempts before device is marked offline (default: 15, 0 = disable offline tracking)
     # max_no_response_count: 15
@@ -75,24 +74,12 @@ binary_sensor:
       name: "Overheat Status"
     dc_output_status:
       name: "DC Output Status"
-    internal_temperature1_status:
-      name: "Internal Temperature 1 Status"
-    internal_temperature2_status:
-      name: "Internal Temperature 2 Status"
-    external_temperature_status:
-      name: "External Temperature Status"
     charging_status:
       name: "Charging Status"
-    equal_charging_status:
-      name: "Equal Charging Status"
     mppt_tracking_status:
       name: "MPPT Tracking Status"
     float_charging_status:
       name: "Float Charging Status"
-    charge_current_limit_status:
-      name: "Charge Current Limit Status"
-    charge_derating_status:
-      name: "Charge Derating Status"
     remote_prohibit_charging_status:
       name: "Remote Prohibit Charging Status"
     pv_overvoltage_status:
@@ -103,10 +90,6 @@ binary_sensor:
       name: "Load Output Status"
     fan_relay_status:
       name: "Fan Relay Status"
-    overcharge_protection_status:
-      name: "Overcharge Protection Status"
-    overvoltage_protection_status:
-      name: "Overvoltage Protection Status"
     online_status:
       name: "Online Status"
 
@@ -123,10 +106,10 @@ sensor:
       name: "MPPT Temperature"
     battery_temperature:
       name: "Battery Temperature"
-    today_yield:
-      name: "Today Yield"
-    generation_total:
-      name: "Total Generation"
+    nominal_voltage:
+      name: "Nominal Voltage"
+    max_charge_current_limit:
+      name: "Max Charge Current Limit"
 
 text_sensor:
   - platform: ampinvt

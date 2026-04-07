@@ -1,7 +1,7 @@
 import esphome.codegen as cg
 from esphome.components import ampinvt_modbus
 import esphome.config_validation as cv
-from esphome.const import CONF_ID
+from esphome.const import CONF_ID, CONF_PROTOCOL
 
 CODEOWNERS = ["@syssi"]
 
@@ -22,6 +22,12 @@ ampinvt_ns = cg.esphome_ns.namespace("ampinvt")
 Ampinvt = ampinvt_ns.class_(
     "Ampinvt", cg.PollingComponent, ampinvt_modbus.AmpinvtModbusDevice
 )
+Protocol = ampinvt_ns.enum("Protocol", is_class=True)
+
+PROTOCOLS = {
+    "ampinvt": Protocol.AMPINVT,
+    "anenji": Protocol.ANENJI,
+}
 
 AMPINVT_COMPONENT_SCHEMA = cv.Schema(
     {
@@ -34,6 +40,9 @@ CONFIG_SCHEMA = cv.All(
     cv.Schema(
         {
             cv.GenerateID(): cv.declare_id(Ampinvt),
+            cv.Optional(CONF_PROTOCOL, default="ampinvt"): cv.enum(
+                PROTOCOLS, lower=True
+            ),
             cv.Optional(
                 CONF_MAX_NO_RESPONSE_COUNT, default=DEFAULT_MAX_NO_RESPONSE_COUNT
             ): cv.int_range(min=0),
@@ -49,4 +58,5 @@ async def to_code(config):
     await cg.register_component(var, config)
     await ampinvt_modbus.register_ampinvt_modbus_device(var, config)
 
+    cg.add(var.set_protocol(config[CONF_PROTOCOL]))
     cg.add(var.set_max_no_response_count(config[CONF_MAX_NO_RESPONSE_COUNT]))

@@ -1,7 +1,6 @@
 """Mock missing esphome external component dependencies for test collection."""
 
 import sys
-import types
 
 import esphome.codegen as cg
 

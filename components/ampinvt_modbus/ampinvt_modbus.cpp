@@ -12,6 +12,12 @@ static const uint8_t AMPINVT_FRAME_SIZE_SETTINGS = 64;
 static const uint8_t AMPINVT_COMMAND_STATUS = 0xB3;
 static const uint8_t AMPINVT_COMMAND_SETTINGS = 0xB2;
 
+// Anenji ANJ-48V protocol variant (shorter frames)
+static const uint8_t ANENJI_FRAME_SIZE_STATUS = 21;
+static const uint8_t ANENJI_FRAME_SIZE_SETTINGS = 26;
+static const uint8_t ANENJI_COMMAND_STATUS = 0xA3;
+static const uint8_t ANENJI_COMMAND_SETTINGS = 0xA2;
+
 uint8_t ampinvt_checksum(const uint8_t data[], const uint8_t len) {
   uint8_t checksum = 0;
   for (uint8_t i = 0; i < len; i++) {
@@ -61,6 +67,12 @@ bool AmpinvtModbus::parse_ampinvt_modbus_byte_(uint8_t byte) {
       break;
     case AMPINVT_COMMAND_SETTINGS:
       frame_len = AMPINVT_FRAME_SIZE_SETTINGS;
+      break;
+    case ANENJI_COMMAND_STATUS:
+      frame_len = ANENJI_FRAME_SIZE_STATUS;
+      break;
+    case ANENJI_COMMAND_SETTINGS:
+      frame_len = ANENJI_FRAME_SIZE_SETTINGS;
       break;
     default:
       // Unknown command, flush buffer immediately

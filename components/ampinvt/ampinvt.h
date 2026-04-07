@@ -9,8 +9,14 @@
 namespace esphome {
 namespace ampinvt {
 
+enum class Protocol : uint8_t {
+  AMPINVT = 0,
+  ANENJI = 1,
+};
+
 class Ampinvt : public PollingComponent, public ampinvt_modbus::AmpinvtModbusDevice {
  public:
+  void set_protocol(Protocol protocol) { protocol_ = protocol; }
   void set_operating_status_binary_sensor(binary_sensor::BinarySensor *operating_status_binary_sensor) {
     operating_status_binary_sensor_ = operating_status_binary_sensor;
   }
@@ -103,6 +109,12 @@ class Ampinvt : public PollingComponent, public ampinvt_modbus::AmpinvtModbusDev
   void set_generation_total_sensor(sensor::Sensor *generation_total_sensor) {
     generation_total_sensor_ = generation_total_sensor;
   }
+  void set_nominal_voltage_sensor(sensor::Sensor *nominal_voltage_sensor) {
+    nominal_voltage_sensor_ = nominal_voltage_sensor;
+  }
+  void set_max_charge_current_limit_sensor(sensor::Sensor *max_charge_current_limit_sensor) {
+    max_charge_current_limit_sensor_ = max_charge_current_limit_sensor;
+  }
 
   void set_operation_status_text_sensor(text_sensor::TextSensor *operation_status_text_sensor) {
     operation_status_text_sensor_ = operation_status_text_sensor;
@@ -147,14 +159,20 @@ class Ampinvt : public PollingComponent, public ampinvt_modbus::AmpinvtModbusDev
   sensor::Sensor *battery_temperature_sensor_{nullptr};
   sensor::Sensor *today_yield_sensor_{nullptr};
   sensor::Sensor *generation_total_sensor_{nullptr};
+  sensor::Sensor *nominal_voltage_sensor_{nullptr};
+  sensor::Sensor *max_charge_current_limit_sensor_{nullptr};
+
+  Protocol protocol_{Protocol::AMPINVT};
 
   text_sensor::TextSensor *operation_status_text_sensor_{nullptr};
 
   uint8_t no_response_count_ = 0;
   uint8_t max_no_response_count_ = 15;
 
-  void on_status_data_(const std::vector<uint8_t> &data);
-  void on_settings_data_(const std::vector<uint8_t> &data);
+  void on_ampinvt_status_data_(const std::vector<uint8_t> &data);
+  void on_ampinvt_settings_data_(const std::vector<uint8_t> &data);
+  void on_anenji_status_data_(const std::vector<uint8_t> &data);
+  void on_anenji_settings_data_(const std::vector<uint8_t> &data);
   void publish_state_(sensor::Sensor *sensor, float value);
   void publish_state_(text_sensor::TextSensor *text_sensor, const std::string &state);
   void publish_state_(binary_sensor::BinarySensor *binary_sensor, const bool &state);

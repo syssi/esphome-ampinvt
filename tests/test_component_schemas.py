@@ -25,7 +25,9 @@ class TestSensorDefs:
         assert sensor.CONF_BATTERY_TEMPERATURE in sensor.SENSOR_DEFS
         assert sensor.CONF_TODAY_YIELD in sensor.SENSOR_DEFS
         assert sensor.CONF_GENERATION_TOTAL in sensor.SENSOR_DEFS
-        assert len(sensor.SENSOR_DEFS) == 7
+        assert sensor.CONF_NOMINAL_VOLTAGE in sensor.SENSOR_DEFS
+        assert sensor.CONF_MAX_CHARGE_CURRENT_LIMIT in sensor.SENSOR_DEFS
+        assert len(sensor.SENSOR_DEFS) == 9
 
     def test_battery_voltage_present(self):
         from esphome.const import CONF_BATTERY_VOLTAGE
