@@ -141,10 +141,10 @@ void Ampinvt::on_ampinvt_status_data_(const std::vector<uint8_t> &data) {
   this->publish_state_(this->overvoltage_protection_status_binary_sensor_,
                        (bool) (ctl_status_byte & ControlStatusBits::OVERVOLTAGE_PROTECTION));
 
+  this->publish_state_(this->pv_voltage_sensor_, ampinvt_get_16bit(6) * 0.1f);
+
   float battery_voltage = ampinvt_get_16bit(8) * 0.01f;
   float charge_current = ampinvt_get_16bit(10) * 0.01f;
-
-  this->publish_state_(this->pv_voltage_sensor_, ampinvt_get_16bit(6) * 0.1f);
   this->publish_state_(this->battery_voltage_sensor_, battery_voltage);
   this->publish_state_(this->charge_current_sensor_, charge_current);
   this->publish_state_(this->charging_power_sensor_, battery_voltage * charge_current);
@@ -244,10 +244,10 @@ void Ampinvt::on_anenji_status_data_(const std::vector<uint8_t> &data) {
                        (bool) (ctl_status_byte & ControlStatusBits::LOAD_OUTPUT));
   this->publish_state_(this->fan_relay_status_binary_sensor_, (bool) (ctl_status_byte & ControlStatusBits::FAN_RELAY));
 
+  this->publish_state_(this->pv_voltage_sensor_, ampinvt_get_16bit(6) * 0.1f);
+
   float battery_voltage = ampinvt_get_16bit(8) * 0.01f;
   float charge_current = ampinvt_get_16bit(10) * 0.01f;
-
-  this->publish_state_(this->pv_voltage_sensor_, ampinvt_get_16bit(6) * 0.1f);
   this->publish_state_(this->battery_voltage_sensor_, battery_voltage);
   this->publish_state_(this->charge_current_sensor_, charge_current);
   this->publish_state_(this->charging_power_sensor_, battery_voltage * charge_current);
