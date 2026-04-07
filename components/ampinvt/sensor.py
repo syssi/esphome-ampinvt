@@ -5,7 +5,6 @@ from esphome.const import (
     CONF_BATTERY_VOLTAGE,
     DEVICE_CLASS_CURRENT,
     DEVICE_CLASS_ENERGY,
-    DEVICE_CLASS_POWER,
     DEVICE_CLASS_TEMPERATURE,
     DEVICE_CLASS_VOLTAGE,
     STATE_CLASS_MEASUREMENT,
@@ -14,7 +13,6 @@ from esphome.const import (
     UNIT_CELSIUS,
     UNIT_KILOWATT_HOURS,
     UNIT_VOLT,
-    UNIT_WATT,
 )
 
 from . import AMPINVT_COMPONENT_SCHEMA, CONF_AMPINVT_ID
@@ -62,10 +60,10 @@ SENSOR_DEFS = {
         "state_class": STATE_CLASS_MEASUREMENT,
     },
     CONF_TODAY_YIELD: {
-        "unit_of_measurement": UNIT_WATT,
-        "accuracy_decimals": 0,
-        "device_class": DEVICE_CLASS_POWER,
-        "state_class": STATE_CLASS_MEASUREMENT,
+        "unit_of_measurement": UNIT_KILOWATT_HOURS,
+        "accuracy_decimals": 3,
+        "device_class": DEVICE_CLASS_ENERGY,
+        "state_class": STATE_CLASS_TOTAL_INCREASING,
     },
     CONF_GENERATION_TOTAL: {
         "unit_of_measurement": UNIT_KILOWATT_HOURS,
