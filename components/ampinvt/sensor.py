@@ -64,7 +64,7 @@ SENSOR_DEFS = {
         "unit_of_measurement": UNIT_WATT_HOURS,
         "accuracy_decimals": 0,
         "device_class": DEVICE_CLASS_ENERGY,
-        "state_class": STATE_CLASS_TOTAL_INCREASING,
+        "state_class": STATE_CLASS_MEASUREMENT,
     },
     CONF_GENERATION_TOTAL: {
         "unit_of_measurement": UNIT_KILOWATT_HOURS,
