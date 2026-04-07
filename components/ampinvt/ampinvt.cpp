@@ -11,6 +11,7 @@ static const uint8_t AMPINVT_COMMAND_STATUS = 0xB3;
 static const uint8_t AMPINVT_COMMAND_SETTINGS = 0xB2;
 static const uint8_t ANENJI_COMMAND_STATUS = 0xA3;
 static const uint8_t ANENJI_COMMAND_SETTINGS = 0xA2;
+static const uint8_t ANENJI_COMMAND_WRITE_PARAMETER = 0xDB;
 
 static const char *const OPERATION_STATUS_CHARGING = "Charging";
 static const char *const OPERATION_STATUS_NOT_CHARGING = "Not Charging";
@@ -70,6 +71,9 @@ void Ampinvt::on_ampinvt_modbus_data(const std::vector<uint8_t> &data) {
       return;
     case ANENJI_COMMAND_SETTINGS:
       this->on_anenji_settings_data_(data);
+      return;
+    case ANENJI_COMMAND_WRITE_PARAMETER:
+      ESP_LOGI(TAG, "Write parameter acknowledged");
       return;
     default:
       ESP_LOGW(TAG, "Unsupported function code 0x%02X in frame: %s", function,
