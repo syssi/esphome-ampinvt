@@ -25,7 +25,7 @@ class TestSensorDefs:
         assert sensor.CONF_BATTERY_TEMPERATURE in sensor.SENSOR_DEFS
         assert sensor.CONF_TODAY_YIELD in sensor.SENSOR_DEFS
         assert sensor.CONF_GENERATION_TOTAL in sensor.SENSOR_DEFS
-        assert sensor.CONF_NOMINAL_VOLTAGE in sensor.SENSOR_DEFS
+        assert sensor.CONF_RATED_VOLTAGE in sensor.SENSOR_DEFS
         assert sensor.CONF_MAX_CHARGE_CURRENT_LIMIT in sensor.SENSOR_DEFS
         assert len(sensor.SENSOR_DEFS) == 9
 

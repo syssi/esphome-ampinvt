@@ -108,8 +108,8 @@ sensor:
       name: "MPPT Temperature"
     battery_temperature:
       name: "Battery Temperature"
-    nominal_voltage:
-      name: "Nominal Voltage"
+    rated_voltage:
+      name: "Rated Voltage"
     max_charge_current_limit:
       name: "Max Charge Current Limit"
 

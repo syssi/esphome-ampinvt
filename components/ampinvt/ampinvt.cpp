@@ -66,6 +66,7 @@ void Ampinvt::on_ampinvt_modbus_data(const std::vector<uint8_t> &data) {
       return;
     case ANENJI_COMMAND_STATUS:
       this->on_anenji_status_data_(data);
+      this->send(ANENJI_COMMAND_SETTINGS, 0x00, 0x00);
       return;
     case ANENJI_COMMAND_SETTINGS:
       this->on_anenji_settings_data_(data);
@@ -163,7 +164,9 @@ void Ampinvt::on_ampinvt_settings_data_(const std::vector<uint8_t> &data) {
     return;
   }
 
-  auto get_16bit = [&](size_t i) -> uint16_t { return (uint16_t(data[i]) << 8) | uint16_t(data[i + 1]); };
+  auto ampinvt_get_16bit = [&](size_t i) -> uint16_t {
+    return (uint16_t(data[i + 0]) << 8) | (uint16_t(data[i + 1]) << 0);
+  };
 
   uint8_t battery_type = data[3];
   uint8_t load_ctrl = data[6];
@@ -177,21 +180,21 @@ void Ampinvt::on_ampinvt_settings_data_(const std::vector<uint8_t> &data) {
   ESP_LOGI(TAG, "  Load control:        %s (%u)", load_ctrl < 5 ? LOAD_CONTROL[load_ctrl] : "Unknown", load_ctrl);
   ESP_LOGI(TAG, "  Local address:       %u", data[7]);
   ESP_LOGI(TAG, "  Baud rate:           %s bps", baud >= 1 && baud <= 4 ? BAUD_RATES[baud] : "Unknown");
-  ESP_LOGI(TAG, "  Rated voltage:       %.2f V", get_16bit(9) * 0.01f);
-  ESP_LOGI(TAG, "  Equal charge V max:  %.2f V", get_16bit(11) * 0.01f);
-  ESP_LOGI(TAG, "  Float charge V max:  %.2f V", get_16bit(13) * 0.01f);
-  ESP_LOGI(TAG, "  Discharge V min:     %.2f V", get_16bit(15) * 0.01f);
-  ESP_LOGI(TAG, "  HW max charge curr:  %.2f A", get_16bit(17) * 0.01f);
-  ESP_LOGI(TAG, "  Max charge curr:     %.2f A", get_16bit(19) * 0.01f);
-  ESP_LOGI(TAG, "  Running charge curr: %.2f A", get_16bit(21) * 0.01f);
+  ESP_LOGI(TAG, "  Rated voltage:       %.2f V", ampinvt_get_16bit(9) * 0.01f);
+  ESP_LOGI(TAG, "  Equal charge V max:  %.2f V", ampinvt_get_16bit(11) * 0.01f);
+  ESP_LOGI(TAG, "  Float charge V max:  %.2f V", ampinvt_get_16bit(13) * 0.01f);
+  ESP_LOGI(TAG, "  Discharge V min:     %.2f V", ampinvt_get_16bit(15) * 0.01f);
+  ESP_LOGI(TAG, "  HW max charge curr:  %.2f A", ampinvt_get_16bit(17) * 0.01f);
+  ESP_LOGI(TAG, "  Max charge curr:     %.2f A", ampinvt_get_16bit(19) * 0.01f);
+  ESP_LOGI(TAG, "  Running charge curr: %.2f A", ampinvt_get_16bit(21) * 0.01f);
   ESP_LOGI(TAG, "  Model code:          0x%02X", data[23]);
-  ESP_LOGI(TAG, "  Over-discharge rec:  %.2f V", get_16bit(25) * 0.01f);
-  ESP_LOGI(TAG, "  OV protection V:     %.2f V", get_16bit(27) * 0.01f);
-  ESP_LOGI(TAG, "  OV recovery V:       %.2f V", get_16bit(29) * 0.01f);
-  ESP_LOGI(TAG, "  Light ctrl ON  PV:   %u V", get_16bit(31));
-  ESP_LOGI(TAG, "  Light ctrl OFF PV:   %u V", get_16bit(33));
-  ESP_LOGI(TAG, "  Delay turn-on:       %u s", get_16bit(35));
-  ESP_LOGI(TAG, "  Delay turn-off:      %u s", get_16bit(37));
+  ESP_LOGI(TAG, "  Over-discharge rec:  %.2f V", ampinvt_get_16bit(25) * 0.01f);
+  ESP_LOGI(TAG, "  OV protection V:     %.2f V", ampinvt_get_16bit(27) * 0.01f);
+  ESP_LOGI(TAG, "  OV recovery V:       %.2f V", ampinvt_get_16bit(29) * 0.01f);
+  ESP_LOGI(TAG, "  Light ctrl ON  PV:   %u V", ampinvt_get_16bit(31));
+  ESP_LOGI(TAG, "  Light ctrl OFF PV:   %u V", ampinvt_get_16bit(33));
+  ESP_LOGI(TAG, "  Delay turn-on:       %u s", ampinvt_get_16bit(35));
+  ESP_LOGI(TAG, "  Delay turn-off:      %u s", ampinvt_get_16bit(37));
 }
 
 void Ampinvt::on_anenji_status_data_(const std::vector<uint8_t> &data) {
@@ -261,10 +264,31 @@ void Ampinvt::on_anenji_settings_data_(const std::vector<uint8_t> &data) {
     return (uint16_t(data[i + 0]) << 8) | (uint16_t(data[i + 1]) << 0);
   };
 
-  this->publish_state_(this->nominal_voltage_sensor_, ampinvt_get_16bit(9) * 0.01f);
+  uint8_t battery_type = data[3];
+  uint8_t load_ctrl = data[6];
+  uint8_t baud = data[8];
+
+  ESP_LOGI(TAG, "Settings:");
+  ESP_LOGI(TAG, "  Battery type:        %s (%u)", battery_type < 4 ? BATTERY_TYPES[battery_type] : "Unknown",
+           battery_type);
+  ESP_LOGI(TAG, "  Identification:      %s", data[4] == 0 ? "Auto recognition" : "Manual setting");
+  ESP_LOGI(TAG, "  Number of batteries: %u", data[5]);
+  ESP_LOGI(TAG, "  Load control:        %s (%u)", load_ctrl < 5 ? LOAD_CONTROL[load_ctrl] : "Unknown", load_ctrl);
+  ESP_LOGI(TAG, "  Local address:       %u", data[7]);
+  ESP_LOGI(TAG, "  Baud rate:           %s bps", baud >= 1 && baud <= 4 ? BAUD_RATES[baud] : "Unknown");
+
+  ESP_LOGI(TAG, "  Rated voltage:       %.2f V", ampinvt_get_16bit(9) * 0.01f);
+  this->publish_state_(this->rated_voltage_sensor_, ampinvt_get_16bit(9) * 0.01f);
+
+  ESP_LOGI(TAG, "  Equal charge V max:  %.2f V", ampinvt_get_16bit(11) * 0.01f);
+  ESP_LOGI(TAG, "  Float charge V max:  %.2f V", ampinvt_get_16bit(13) * 0.01f);
+  ESP_LOGI(TAG, "  Discharge V min:     %.2f V", ampinvt_get_16bit(15) * 0.01f);
+  ESP_LOGI(TAG, "  HW max charge curr:  %.2f A", ampinvt_get_16bit(17) * 0.01f);
+
+  ESP_LOGI(TAG, "  Max charge curr:     %.2f A", ampinvt_get_16bit(19) * 0.01f);
   this->publish_state_(this->max_charge_current_limit_sensor_, ampinvt_get_16bit(19) * 0.01f);
-  ESP_LOGI(TAG, "Settings: Nominal: %.2fV  MaxCurrent: %.2fA", ampinvt_get_16bit(9) * 0.01f,
-           ampinvt_get_16bit(19) * 0.01f);
+
+  ESP_LOGI(TAG, "  Running charge curr: %.2f A", ampinvt_get_16bit(21) * 0.01f);
 }
 
 void Ampinvt::publish_device_unavailable_() {
@@ -279,7 +303,7 @@ void Ampinvt::publish_device_unavailable_() {
   this->publish_state_(this->battery_temperature_sensor_, NAN);
   this->publish_state_(this->today_yield_sensor_, NAN);
   this->publish_state_(this->generation_total_sensor_, NAN);
-  this->publish_state_(this->nominal_voltage_sensor_, NAN);
+  this->publish_state_(this->rated_voltage_sensor_, NAN);
   this->publish_state_(this->max_charge_current_limit_sensor_, NAN);
 }
 
@@ -368,7 +392,7 @@ void Ampinvt::dump_config() {
   LOG_SENSOR("", "Battery Temperature", this->battery_temperature_sensor_);
   LOG_SENSOR("", "Today Yield", this->today_yield_sensor_);
   LOG_SENSOR("", "Generation Total", this->generation_total_sensor_);
-  LOG_SENSOR("", "Nominal Voltage", this->nominal_voltage_sensor_);
+  LOG_SENSOR("", "Rated Voltage", this->rated_voltage_sensor_);
   LOG_SENSOR("", "Max Charge Current Limit", this->max_charge_current_limit_sensor_);
 
   LOG_TEXT_SENSOR("", "Operation Status", this->operation_status_text_sensor_);
