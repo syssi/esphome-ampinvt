@@ -16,10 +16,9 @@ static const char *const OPERATION_STATUS_CHARGING = "Charging";
 static const char *const OPERATION_STATUS_NOT_CHARGING = "Not Charging";
 static const char *const OPERATION_STATUS_OFFLINE = "Offline";
 
-static constexpr const char *const BATTERY_TYPES[] = {"Lead-acid maintenance free", "Lead-acid Gel",
-                                                       "Lead-acid liquid", "Lithium"};
-static constexpr const char *const LOAD_CONTROL[] = {"Off", "Auto", "Time control", "Light control",
-                                                      "Remote control"};
+static constexpr const char *const BATTERY_TYPES[] = {"Lead-acid maintenance free", "Lead-acid Gel", "Lead-acid liquid",
+                                                      "Lithium"};
+static constexpr const char *const LOAD_CONTROL[] = {"Off", "Auto", "Time control", "Light control", "Remote control"};
 static constexpr const char *const BAUD_RATES[] = {"", "1200", "2400", "4800", "9600"};
 
 namespace OperationStatusBits {
