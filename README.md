@@ -12,7 +12,8 @@ ESPHome component to monitor and control an Ampinvt MPPT solar controller via RS
 
 * AP-60C
 * AP-80A
-* SOLAFANS MPPT Solar Charge Controller
+* SOLAFANS MPPT SF9645B
+* SOLAFANS MPPT SF9665B
 
 ## Requirements
 
