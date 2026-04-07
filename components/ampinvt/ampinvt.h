@@ -113,6 +113,9 @@ class Ampinvt : public PollingComponent, public ampinvt_modbus::AmpinvtModbusDev
   void set_max_charge_current_limit_sensor(sensor::Sensor *max_charge_current_limit_sensor) {
     max_charge_current_limit_sensor_ = max_charge_current_limit_sensor;
   }
+  void set_charging_power_sensor(sensor::Sensor *charging_power_sensor) {
+    charging_power_sensor_ = charging_power_sensor;
+  }
 
   void set_operation_status_text_sensor(text_sensor::TextSensor *operation_status_text_sensor) {
     operation_status_text_sensor_ = operation_status_text_sensor;
@@ -159,6 +162,7 @@ class Ampinvt : public PollingComponent, public ampinvt_modbus::AmpinvtModbusDev
   sensor::Sensor *generation_total_sensor_{nullptr};
   sensor::Sensor *rated_voltage_sensor_{nullptr};
   sensor::Sensor *max_charge_current_limit_sensor_{nullptr};
+  sensor::Sensor *charging_power_sensor_{nullptr};
 
   Protocol protocol_{Protocol::AMPINVT};
 

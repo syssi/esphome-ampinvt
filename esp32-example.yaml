@@ -127,6 +127,8 @@ sensor:
       name: "Today Yield"
     generation_total:
       name: "Total Generation"
+    charging_power:
+      name: "Charging Power"
 
 text_sensor:
   - platform: ampinvt
