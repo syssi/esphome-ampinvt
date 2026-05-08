@@ -3,8 +3,7 @@
 #include "esphome/core/component.h"
 #include "esphome/components/uart/uart.h"
 
-namespace esphome {
-namespace ampinvt_modbus {
+namespace esphome::ampinvt_modbus {
 
 class AmpinvtModbusDevice;
 
@@ -53,5 +52,4 @@ class AmpinvtModbusDevice {
   uint8_t address_;
 };
 
-}  // namespace ampinvt_modbus
-}  // namespace esphome
+}  // namespace esphome::ampinvt_modbus

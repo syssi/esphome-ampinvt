@@ -2,8 +2,7 @@
 #include "esphome/core/log.h"
 #include "esphome/core/helpers.h"
 
-namespace esphome {
-namespace ampinvt {
+namespace esphome::ampinvt {
 
 static const char *const TAG = "ampinvt";
 
@@ -416,5 +415,4 @@ void Ampinvt::dump_config() {
   LOG_TEXT_SENSOR("", "Operation Status", this->operation_status_text_sensor_);
 }
 
-}  // namespace ampinvt
-}  // namespace esphome
+}  // namespace esphome::ampinvt
