@@ -41,7 +41,7 @@ class AmpinvtModbusDevice {
   void set_address(uint8_t address) { address_ = address; }
   virtual void on_ampinvt_modbus_data(const std::vector<uint8_t> &data) = 0;
 
-  void send(uint8_t function, uint16_t start_address, uint16_t register_count) {
+  virtual void send(uint8_t function, uint16_t start_address, uint16_t register_count) {
     this->parent_->send(this->address_, function, start_address, register_count);
   }
 
