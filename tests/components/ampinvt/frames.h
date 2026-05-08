@@ -1,0 +1,39 @@
+#pragma once
+#include <cstdint>
+#include <vector>
+
+namespace esphome::ampinvt::testing {
+
+// Source: esp32-example-faker.yaml, 4th B3 frame
+// op_status=0x00: all flags false
+// chg_status=0x0D: charging=true, mppt_tracking=true, float_charging=true
+// ctl_status=0x04: fan_relay=true
+// pv_voltage=34.0V  battery_voltage=13.71V  charge_current=29.47A
+// mppt_temperature=28.4°C  battery_temperature=22.6°C
+// today_yield=831Wh  generation_total=291.615kWh
+// charging_power=404.03W  operation_status="Charging"
+static const std::vector<uint8_t> AMPINVT_STATUS_CHARGING_FRAME = {
+    0x01, 0xB3, 0x01, 0x00, 0x0D, 0x04, 0x01, 0x54, 0x05, 0x5B, 0x0B, 0x83, 0x01, 0x1C, 0x00, 0x00, 0x00, 0xE2, 0x00,
+    0x00, 0x00, 0x00, 0x03, 0x3F, 0x00, 0x04, 0x73, 0x1F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xE0,
+};
+
+// Source: esp32-anenji-example-faker.yaml, 1st A3 frame
+// op_status=0x00: all flags false
+// chg_status=0x07: charging=true, equal_charging=true, mppt_tracking=true
+// ctl_status=0x00: all flags false
+// pv_voltage=23.5V  battery_voltage=12.59V  charge_current=7.76A
+// mppt_temperature=23.4°C  battery_temperature=22.7°C
+// charging_power=97.70W  operation_status="Charging"
+static const std::vector<uint8_t> ANENJI_STATUS_FRAME = {
+    0x01, 0xA3, 0x01, 0x00, 0x07, 0x00, 0x00, 0xEB, 0x04, 0xEB, 0x03,
+    0x08, 0x00, 0xEA, 0x00, 0x00, 0x00, 0xE3, 0x01, 0x53, 0xB2,
+};
+
+// Source: esp32-anenji-example-faker.yaml, A2 settings frame
+// rated_voltage=48.00V  max_charge_current_limit=100.00A
+static const std::vector<uint8_t> ANENJI_SETTINGS_FRAME = {
+    0x01, 0xA2, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0xC0, 0x00, 0x00,
+    0x15, 0x40, 0x00, 0x00, 0x00, 0x00, 0x27, 0x10, 0x00, 0x00, 0x00, 0x00, 0x02,
+};
+
+}  // namespace esphome::ampinvt::testing

@@ -231,6 +231,8 @@ void Ampinvt::on_anenji_status_data_(const std::vector<uint8_t> &data) {
 
   uint8_t chg_status_byte = data[4];
   this->publish_state_(this->charging_status_binary_sensor_, (bool) (chg_status_byte & ChargingStatusBits::CHARGING));
+  this->publish_state_(this->equal_charging_status_binary_sensor_,
+                       (bool) (chg_status_byte & ChargingStatusBits::EQUAL_CHARGING));
   this->publish_state_(this->mppt_tracking_status_binary_sensor_,
                        (bool) (chg_status_byte & ChargingStatusBits::MPPT_TRACKING));
   this->publish_state_(this->float_charging_status_binary_sensor_,
