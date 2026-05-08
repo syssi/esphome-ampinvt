@@ -6,8 +6,7 @@
 #include "esphome/components/text_sensor/text_sensor.h"
 #include "esphome/components/ampinvt_modbus/ampinvt_modbus.h"
 
-namespace esphome {
-namespace ampinvt {
+namespace esphome::ampinvt {
 
 enum class Protocol : uint8_t {
   AMPINVT = 0,
@@ -183,5 +182,4 @@ class Ampinvt : public PollingComponent, public ampinvt_modbus::AmpinvtModbusDev
   void track_online_status_();
 };
 
-}  // namespace ampinvt
-}  // namespace esphome
+}  // namespace esphome::ampinvt

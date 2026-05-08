@@ -1,8 +1,7 @@
 #include "ampinvt_modbus.h"
 #include "esphome/core/log.h"
 
-namespace esphome {
-namespace ampinvt_modbus {
+namespace esphome::ampinvt_modbus {
 
 static const char *const TAG = "ampinvt_modbus";
 
@@ -160,5 +159,4 @@ void AmpinvtModbus::send(uint8_t address, uint8_t function, uint16_t start_addre
     this->flow_control_pin_->digital_write(false);
 }
 
-}  // namespace ampinvt_modbus
-}  // namespace esphome
+}  // namespace esphome::ampinvt_modbus
