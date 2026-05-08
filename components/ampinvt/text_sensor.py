@@ -1,6 +1,7 @@
 import esphome.codegen as cg
 from esphome.components import text_sensor
 import esphome.config_validation as cv
+from esphome.const import ENTITY_CATEGORY_DIAGNOSTIC
 
 from . import AMPINVT_COMPONENT_SCHEMA, CONF_AMPINVT_ID
 
@@ -16,7 +17,8 @@ TEXT_SENSORS = [
 CONFIG_SCHEMA = AMPINVT_COMPONENT_SCHEMA.extend(
     {
         cv.Optional(CONF_OPERATION_STATUS): text_sensor.text_sensor_schema(
-            icon="mdi:solar-power"
+            icon="mdi:solar-power",
+            entity_category=ENTITY_CATEGORY_DIAGNOSTIC,
         ),
     }
 )
