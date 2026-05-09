@@ -69,7 +69,7 @@ TEST(AmpinvtModbusTest, UnknownCommandRejected) {
   device.set_address(0x01);
   modbus.register_device(&device);
 
-  // Byte 0=address, byte 1=unknown command 0xFF
+  // addr=0x01, unknown cmd=0xFF
   modbus.parse_ampinvt_modbus_byte_(0x01);
   bool result = modbus.parse_ampinvt_modbus_byte_(0xFF);
   EXPECT_FALSE(result);
