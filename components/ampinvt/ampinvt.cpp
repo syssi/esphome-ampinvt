@@ -86,7 +86,7 @@ void Ampinvt::on_ampinvt_modbus_data(const std::vector<uint8_t> &data) {
 }
 
 void Ampinvt::on_ampinvt_status_data_(const std::vector<uint8_t> &data) {
-  ESP_LOGI(TAG, "Ampinvt status frame (%d bytes) received", data.size());
+  ESP_LOGI(TAG, "Ampinvt status frame (%zu bytes) received", data.size());
   ESP_LOGD(TAG, "  %s", format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
 
   if (data.size() < 37) {
@@ -167,7 +167,7 @@ void Ampinvt::on_ampinvt_status_data_(const std::vector<uint8_t> &data) {
 }
 
 void Ampinvt::on_ampinvt_settings_data_(const std::vector<uint8_t> &data) {
-  ESP_LOGI(TAG, "Ampinvt settings frame (%d bytes) received", data.size());
+  ESP_LOGI(TAG, "Ampinvt settings frame (%zu bytes) received", data.size());
   ESP_LOGD(TAG, "  %s", format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
 
   if (data.size() < 64) {
@@ -209,7 +209,7 @@ void Ampinvt::on_ampinvt_settings_data_(const std::vector<uint8_t> &data) {
 }
 
 void Ampinvt::on_anenji_status_data_(const std::vector<uint8_t> &data) {
-  ESP_LOGI(TAG, "Anenji status frame (%d bytes) received", data.size());
+  ESP_LOGI(TAG, "Anenji status frame (%zu bytes) received", data.size());
   ESP_LOGD(TAG, "  %s", format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
 
   if (data.size() < 21) {
@@ -269,7 +269,7 @@ void Ampinvt::on_anenji_status_data_(const std::vector<uint8_t> &data) {
 }
 
 void Ampinvt::on_anenji_settings_data_(const std::vector<uint8_t> &data) {
-  ESP_LOGI(TAG, "Anenji settings frame (%d bytes) received", data.size());
+  ESP_LOGI(TAG, "Anenji settings frame (%zu bytes) received", data.size());
   ESP_LOGD(TAG, "  %s", format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
 
   if (data.size() < 26) {
