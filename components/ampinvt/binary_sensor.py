@@ -1,7 +1,7 @@
 import esphome.codegen as cg
 from esphome.components import binary_sensor
 import esphome.config_validation as cv
-from esphome.const import ENTITY_CATEGORY_DIAGNOSTIC
+from esphome.const import DEVICE_CLASS_PROBLEM, ENTITY_CATEGORY_DIAGNOSTIC
 
 from . import AMPINVT_COMPONENT_SCHEMA, CONF_AMPINVT_ID
 
@@ -44,6 +44,7 @@ BINARY_SENSOR_DEFS = {
     CONF_FAN_STATUS: {"icon": "mdi:fan", "entity_category": ENTITY_CATEGORY_DIAGNOSTIC},
     CONF_OVERHEAT_STATUS: {
         "icon": "mdi:thermometer-alert",
+        "device_class": DEVICE_CLASS_PROBLEM,
         "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
     },
     CONF_DC_OUTPUT_STATUS: {
@@ -108,10 +109,12 @@ BINARY_SENSOR_DEFS = {
     },
     CONF_OVERCHARGE_PROTECTION_STATUS: {
         "icon": "mdi:shield-alert",
+        "device_class": DEVICE_CLASS_PROBLEM,
         "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
     },
     CONF_OVERVOLTAGE_PROTECTION_STATUS: {
         "icon": "mdi:shield-alert",
+        "device_class": DEVICE_CLASS_PROBLEM,
         "entity_category": ENTITY_CATEGORY_DIAGNOSTIC,
     },
     CONF_ONLINE_STATUS: {
