@@ -126,10 +126,23 @@ sensor:
     generation_total:
       name: "Total Generation"
     charging_power:
+      id: inverter0_charging_power
       name: "Charging Power"
+  - platform: total_daily_energy
+    name: "Charging Energy Today"
+    icon: mdi:counter
+    power_id: inverter0_charging_power
+    accuracy_decimals: 3
+    unit_of_measurement: kWh
+    restore: true
+    filters:
+      - multiply: 0.001
 
 text_sensor:
   - platform: ampinvt
     ampinvt_id: ampinvt0
     operation_status:
       name: "Operation Status"
+
+time:
+  - platform: sntp
