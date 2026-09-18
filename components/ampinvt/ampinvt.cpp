@@ -184,13 +184,16 @@ void Ampinvt::on_ampinvt_settings_data_(const std::vector<uint8_t> &data) {
   uint8_t baud = data[8];
 
   ESP_LOGI(TAG, "Settings:");
-  ESP_LOGI(TAG, "  Battery type:        %s (%u)", battery_type < 4 ? BATTERY_TYPES[battery_type] : "Unknown",
-           battery_type);
-  ESP_LOGI(TAG, "  Identification:      %s", data[4] == 0 ? "Auto recognition" : "Manual setting");
+  ESP_LOGI(TAG, "  Battery type:        %s (%u)",
+           battery_type < 4 ? BATTERY_TYPES[battery_type] : LOG_STR_LITERAL("Unknown"), battery_type);
+  ESP_LOGI(TAG, "  Identification:      %s",
+           data[4] == 0 ? LOG_STR_LITERAL("Auto recognition") : LOG_STR_LITERAL("Manual setting"));
   ESP_LOGI(TAG, "  Number of batteries: %u", data[5]);
-  ESP_LOGI(TAG, "  Load control:        %s (%u)", load_ctrl < 5 ? LOAD_CONTROL[load_ctrl] : "Unknown", load_ctrl);
+  ESP_LOGI(TAG, "  Load control:        %s (%u)", load_ctrl < 5 ? LOAD_CONTROL[load_ctrl] : LOG_STR_LITERAL("Unknown"),
+           load_ctrl);
   ESP_LOGI(TAG, "  Local address:       %u", data[7]);
-  ESP_LOGI(TAG, "  Baud rate:           %s bps", baud >= 1 && baud <= 4 ? BAUD_RATES[baud] : "Unknown");
+  ESP_LOGI(TAG, "  Baud rate:           %s bps",
+           baud >= 1 && baud <= 4 ? BAUD_RATES[baud] : LOG_STR_LITERAL("Unknown"));
   ESP_LOGI(TAG, "  Rated voltage:       %.2f V", ampinvt_get_16bit(9) * 0.01f);
   ESP_LOGI(TAG, "  Equal charge V max:  %.2f V", ampinvt_get_16bit(11) * 0.01f);
   ESP_LOGI(TAG, "  Float charge V max:  %.2f V", ampinvt_get_16bit(13) * 0.01f);
@@ -286,13 +289,16 @@ void Ampinvt::on_anenji_settings_data_(const std::vector<uint8_t> &data) {
   uint8_t baud = data[8];
 
   ESP_LOGI(TAG, "Settings:");
-  ESP_LOGI(TAG, "  Battery type:        %s (%u)", battery_type < 4 ? BATTERY_TYPES[battery_type] : "Unknown",
-           battery_type);
-  ESP_LOGI(TAG, "  Identification:      %s", data[4] == 0 ? "Auto recognition" : "Manual setting");
+  ESP_LOGI(TAG, "  Battery type:        %s (%u)",
+           battery_type < 4 ? BATTERY_TYPES[battery_type] : LOG_STR_LITERAL("Unknown"), battery_type);
+  ESP_LOGI(TAG, "  Identification:      %s",
+           data[4] == 0 ? LOG_STR_LITERAL("Auto recognition") : LOG_STR_LITERAL("Manual setting"));
   ESP_LOGI(TAG, "  Number of batteries: %u", data[5]);
-  ESP_LOGI(TAG, "  Load control:        %s (%u)", load_ctrl < 5 ? LOAD_CONTROL[load_ctrl] : "Unknown", load_ctrl);
+  ESP_LOGI(TAG, "  Load control:        %s (%u)", load_ctrl < 5 ? LOAD_CONTROL[load_ctrl] : LOG_STR_LITERAL("Unknown"),
+           load_ctrl);
   ESP_LOGI(TAG, "  Local address:       %u", data[7]);
-  ESP_LOGI(TAG, "  Baud rate:           %s bps", baud >= 1 && baud <= 4 ? BAUD_RATES[baud] : "Unknown");
+  ESP_LOGI(TAG, "  Baud rate:           %s bps",
+           baud >= 1 && baud <= 4 ? BAUD_RATES[baud] : LOG_STR_LITERAL("Unknown"));
 
   ESP_LOGI(TAG, "  Rated voltage:       %.2f V", ampinvt_get_16bit(9) * 0.01f);
   this->publish_state_(this->rated_voltage_sensor_, ampinvt_get_16bit(9) * 0.01f);
@@ -377,7 +383,8 @@ void Ampinvt::dump_config() {
   ESP_LOGCONFIG(TAG, "Ampinvt:");
   ESP_LOGCONFIG(TAG, "  Address: 0x%02X", this->address_);
   ESP_LOGCONFIG(TAG, "  Protocol: %s",
-                (this->protocol_ == Protocol::ANENJI) ? "Anenji (0xA2/0xA3)" : "Ampinvt (0xB2/0xB3)");
+                (this->protocol_ == Protocol::ANENJI) ? LOG_STR_LITERAL("Anenji (0xA2/0xA3)")
+                                                      : LOG_STR_LITERAL("Ampinvt (0xB2/0xB3)"));
   ESP_LOGCONFIG(TAG, "  Max no response count: %d", this->max_no_response_count_);
 
   LOG_BINARY_SENSOR("", "Operating Status", this->operating_status_binary_sensor_);
