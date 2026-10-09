@@ -1,9 +1,14 @@
 #include "ampinvt_modbus.h"
 #include "esphome/core/log.h"
 
+// Fallback for ESPHome < 2026.10.0
+#ifndef ESPHOME_LOG_TAG
+#define ESPHOME_LOG_TAG(name, tag) static const char *const name = tag
+#endif
+
 namespace esphome::ampinvt_modbus {
 
-static const char *const TAG = "ampinvt_modbus";
+ESPHOME_LOG_TAG(TAG, "ampinvt_modbus");
 
 // Ampinvt uses a custom protocol that's not standard modbus
 static const uint8_t AMPINVT_FRAME_SIZE_STATUS = 37;
