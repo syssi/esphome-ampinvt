@@ -11,6 +11,16 @@ namespace esphome::ampinvt {
 
 ESPHOME_LOG_TAG(TAG, "ampinvt");
 
+static constexpr size_t MAX_HEX_DUMP_BYTES = 100;
+
+static void log_hex_chunked(const char *tag, const uint8_t *data, size_t size) {
+  char buf[format_hex_pretty_size(100)];
+  for (size_t i = 0; i < size; i += 100) {
+    size_t len = std::min<size_t>(100, size - i);
+    ESP_LOGD(tag, "  %s", format_hex_pretty_to(buf, sizeof(buf), data + i, len, '.'));
+  }
+}
+
 static const uint8_t AMPINVT_COMMAND_STATUS = 0xB3;
 static const uint8_t AMPINVT_COMMAND_SETTINGS = 0xB2;
 static const uint8_t ANENJI_COMMAND_STATUS = 0xA3;
@@ -84,15 +94,16 @@ void Ampinvt::on_ampinvt_modbus_data(const std::vector<uint8_t> &data) {
       ESP_LOGW(TAG, "Error response: code=0x%02X command=0x%02X control=0x%02X", data[2], data[3], data[4]);
       return;
     default:
+      char hex_buf[format_hex_pretty_size(MAX_HEX_DUMP_BYTES)];
       ESP_LOGW(TAG, "Unsupported function code 0x%02X in frame: %s", function,
-               format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
+               format_hex_pretty_to(hex_buf, data, '.'));
       break;
   }
 }
 
 void Ampinvt::on_ampinvt_status_data_(const std::vector<uint8_t> &data) {
   ESP_LOGI(TAG, "Ampinvt status frame (%zu bytes) received", data.size());
-  ESP_LOGD(TAG, "  %s", format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
+  log_hex_chunked(TAG, data.data(), data.size());
 
   if (data.size() < 37) {
     ESP_LOGW(TAG, "Invalid data size for status frame: %zu", data.size());
@@ -173,7 +184,7 @@ void Ampinvt::on_ampinvt_status_data_(const std::vector<uint8_t> &data) {
 
 void Ampinvt::on_ampinvt_settings_data_(const std::vector<uint8_t> &data) {
   ESP_LOGI(TAG, "Ampinvt settings frame (%zu bytes) received", data.size());
-  ESP_LOGD(TAG, "  %s", format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
+  log_hex_chunked(TAG, data.data(), data.size());
 
   if (data.size() < 64) {
     ESP_LOGW(TAG, "Invalid data size: %zu", data.size());
@@ -218,7 +229,7 @@ void Ampinvt::on_ampinvt_settings_data_(const std::vector<uint8_t> &data) {
 
 void Ampinvt::on_anenji_status_data_(const std::vector<uint8_t> &data) {
   ESP_LOGI(TAG, "Anenji status frame (%zu bytes) received", data.size());
-  ESP_LOGD(TAG, "  %s", format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
+  log_hex_chunked(TAG, data.data(), data.size());
 
   if (data.size() < 21) {
     ESP_LOGW(TAG, "Invalid data size for status frame: %zu", data.size());
@@ -278,7 +289,7 @@ void Ampinvt::on_anenji_status_data_(const std::vector<uint8_t> &data) {
 
 void Ampinvt::on_anenji_settings_data_(const std::vector<uint8_t> &data) {
   ESP_LOGI(TAG, "Anenji settings frame (%zu bytes) received", data.size());
-  ESP_LOGD(TAG, "  %s", format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
+  log_hex_chunked(TAG, data.data(), data.size());
 
   if (data.size() < 26) {
     ESP_LOGW(TAG, "Invalid data size: %zu", data.size());
