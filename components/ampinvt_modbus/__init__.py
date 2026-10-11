@@ -18,7 +18,7 @@ AmpinvtModbus = ampinvt_modbus_ns.class_("AmpinvtModbus", cg.Component, uart.UAR
 AmpinvtModbusDevice = ampinvt_modbus_ns.class_("AmpinvtModbusDevice")
 
 CONFIG_SCHEMA = cv.All(
-    cv.require_esphome_version(2024, 12, 0),
+    cv.require_esphome_version(2026, 1, 0),
     cv.Schema(
         {
             cv.GenerateID(): cv.declare_id(AmpinvtModbus),
