@@ -20,11 +20,15 @@ from esphome.const import (
 
 from . import AMPINVT_COMPONENT_SCHEMA, CONF_AMPINVT_ID
 
+try:
+    from esphome.components.const import CONF_CHARGE_CURRENT
+except ImportError:  # ESPHome < 2026.11.0
+    CONF_CHARGE_CURRENT = "charge_current"
+
 DEPENDENCIES = ["ampinvt"]
 CODEOWNERS = ["@syssi"]
 
 CONF_PV_VOLTAGE = "pv_voltage"
-CONF_CHARGE_CURRENT = "charge_current"
 CONF_MPPT_TEMPERATURE = "mppt_temperature"
 CONF_BATTERY_TEMPERATURE = "battery_temperature"
 CONF_TODAY_YIELD = "today_yield"
