@@ -194,4 +194,70 @@ TEST(AmpinvtSafetyTest, NullSensorsDoNotCrash) {
   EXPECT_NO_FATAL_FAILURE(bms.on_ampinvt_modbus_data(ANENJI_SETTINGS_FRAME));
 }
 
+TEST(AmpinvtPublishDeviceUnavailableTest, InvalidatesBinarySensors) {
+  TestableAmpinvt bms;
+  binary_sensor::BinarySensor online, operating_status, battery_status, fan_status, overheat_status, dc_output_status;
+  binary_sensor::BinarySensor internal_temperature1_status, internal_temperature2_status, external_temperature_status;
+  binary_sensor::BinarySensor charging_status, equal_charging_status, mppt_tracking_status, float_charging_status;
+  binary_sensor::BinarySensor charge_current_limit_status, charge_derating_status, remote_prohibit_charging_status;
+  binary_sensor::BinarySensor pv_overvoltage_status, charge_output_relay_status, load_output_status, fan_relay_status;
+  binary_sensor::BinarySensor overcharge_protection_status, overvoltage_protection_status;
+  bms.set_online_status_binary_sensor(&online);
+  bms.set_operating_status_binary_sensor(&operating_status);
+  bms.set_battery_status_binary_sensor(&battery_status);
+  bms.set_fan_status_binary_sensor(&fan_status);
+  bms.set_overheat_status_binary_sensor(&overheat_status);
+  bms.set_dc_output_status_binary_sensor(&dc_output_status);
+  bms.set_internal_temperature1_status_binary_sensor(&internal_temperature1_status);
+  bms.set_internal_temperature2_status_binary_sensor(&internal_temperature2_status);
+  bms.set_external_temperature_status_binary_sensor(&external_temperature_status);
+  bms.set_charging_status_binary_sensor(&charging_status);
+  bms.set_equal_charging_status_binary_sensor(&equal_charging_status);
+  bms.set_mppt_tracking_status_binary_sensor(&mppt_tracking_status);
+  bms.set_float_charging_status_binary_sensor(&float_charging_status);
+  bms.set_charge_current_limit_status_binary_sensor(&charge_current_limit_status);
+  bms.set_charge_derating_status_binary_sensor(&charge_derating_status);
+  bms.set_remote_prohibit_charging_status_binary_sensor(&remote_prohibit_charging_status);
+  bms.set_pv_overvoltage_status_binary_sensor(&pv_overvoltage_status);
+  bms.set_charge_output_relay_status_binary_sensor(&charge_output_relay_status);
+  bms.set_load_output_status_binary_sensor(&load_output_status);
+  bms.set_fan_relay_status_binary_sensor(&fan_relay_status);
+  bms.set_overcharge_protection_status_binary_sensor(&overcharge_protection_status);
+  bms.set_overvoltage_protection_status_binary_sensor(&overvoltage_protection_status);
+  const std::vector<binary_sensor::BinarySensor *> binary_sensors = {&operating_status,
+                                                                     &battery_status,
+                                                                     &fan_status,
+                                                                     &overheat_status,
+                                                                     &dc_output_status,
+                                                                     &internal_temperature1_status,
+                                                                     &internal_temperature2_status,
+                                                                     &external_temperature_status,
+                                                                     &charging_status,
+                                                                     &equal_charging_status,
+                                                                     &mppt_tracking_status,
+                                                                     &float_charging_status,
+                                                                     &charge_current_limit_status,
+                                                                     &charge_derating_status,
+                                                                     &remote_prohibit_charging_status,
+                                                                     &pv_overvoltage_status,
+                                                                     &charge_output_relay_status,
+                                                                     &load_output_status,
+                                                                     &fan_relay_status,
+                                                                     &overcharge_protection_status,
+                                                                     &overvoltage_protection_status};
+
+  online.publish_state(true);
+  for (auto *binary_sensor : binary_sensors) {
+    binary_sensor->publish_state(true);
+  }
+
+  bms.publish_device_unavailable_();
+
+  EXPECT_TRUE(online.has_state());
+  EXPECT_FALSE(online.state);
+  for (size_t i = 0; i < binary_sensors.size(); i++) {
+    EXPECT_FALSE(binary_sensors[i]->has_state()) << "binary sensor index " << i;
+  }
+}
+
 }  // namespace esphome::ampinvt::testing
