@@ -334,6 +334,28 @@ void Ampinvt::publish_device_unavailable_() {
   this->publish_state_(this->online_status_binary_sensor_, false);
   this->publish_state_(this->operation_status_text_sensor_, OPERATION_STATUS_OFFLINE);
 
+  this->invalidate_binary_sensor_(this->operating_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->battery_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->fan_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->overheat_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->dc_output_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->internal_temperature1_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->internal_temperature2_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->external_temperature_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->charging_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->equal_charging_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->mppt_tracking_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->float_charging_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->charge_current_limit_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->charge_derating_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->remote_prohibit_charging_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->pv_overvoltage_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->charge_output_relay_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->load_output_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->fan_relay_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->overcharge_protection_status_binary_sensor_);
+  this->invalidate_binary_sensor_(this->overvoltage_protection_status_binary_sensor_);
+
   // Set all sensors to NAN when device is unavailable
   this->publish_state_(this->pv_voltage_sensor_, NAN);
   this->publish_state_(this->battery_voltage_sensor_, NAN);
@@ -379,6 +401,13 @@ void Ampinvt::publish_state_(binary_sensor::BinarySensor *binary_sensor, const b
     return;
 
   binary_sensor->publish_state(state);
+}
+
+void Ampinvt::invalidate_binary_sensor_(binary_sensor::BinarySensor *binary_sensor) {
+  if (binary_sensor == nullptr)
+    return;
+
+  binary_sensor->invalidate_state();
 }
 
 void Ampinvt::publish_state_(sensor::Sensor *sensor, float value) {
